@@ -1,0 +1,60 @@
+*{
+	font-family: "Jersey 10", sans-serif;
+}
+
+h1{
+	color: darkred;
+}
+
+
+div{
+	border: 3px solid black;
+}
+.photo{
+	min width: 100px;
+	min-height: 100px;
+	max width: 25%;
+}
+.text{
+	max width: 70%;
+}
+
+.about{
+  display: flex;
+  margin-bottom: 10%;
+  margin-up: 10%;
+  min-height: 40%;
+}
+
+
+div#tek.photo {
+	display: flex;
+    position: left;
+    width: 20%;
+    height: auto;
+
+
+}
+div#tek.text {
+	display: flex;
+    position: right;
+    width: 80%;
+    height: auto;
+}
+
+
+
+div#cift.photo {
+	display: flex;
+    position: right;
+    width: 20%;
+
+
+}
+div#cift.text {
+	display: flex;
+    position: left;
+    width: 80%;
+}
+
+
