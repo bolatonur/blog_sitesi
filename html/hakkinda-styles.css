@@ -2,13 +2,10 @@
 	font-family: "Jersey 20", sans-serif;
 }
 
+
 h1{
 	color: darkred;
-}
-
-
-div{
-	border: 3px solid black;
+	font-size: 35px;
 }
 .photo{
 	min width: 100px;
@@ -56,6 +53,8 @@ div#cift.text {
     position: left;
     width: 80%;
 }
+
+
 
 /* header ve footer css kısmı */
 
