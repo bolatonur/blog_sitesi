@@ -73,6 +73,14 @@ button{
   flex: 60%;
   background-color: white;
   padding: 20px;
+
+}
+
+  .footer{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	background-color: darkgray;
 }
 
 
