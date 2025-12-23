@@ -57,4 +57,46 @@ div#cift.text {
     width: 80%;
 }
 
+/* header ve footer css kısmı */
+
+.header{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 25px;
+	padding-right: 25px;
+	background-color: darkgray;
+
+	display: flex;
+
+}
+
+.sitelogo {
+
+	text-align: center;
+
+	flex-grow: 4;
+
+}
+
+.butonlar{
+	gap: 25px;
+	display: flex;
+	flex-direction: row-reverse;
+	flex-grow: 8;
+
+}
+
+button{
+
+	font-size: 25px;
+}
+
+
+.footer{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	background-color: darkgray;
+}
+
 
