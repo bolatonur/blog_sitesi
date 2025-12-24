@@ -9,27 +9,43 @@ h1 {
     font-size: 35px;
 }
 
-
-/* yeni div başlangıç OKUYUNCA KALDIR*/
+/* sayfayı responsive hale getirmek için birkaç ufak düzenleme -onur */
 
 .blog{
+    display: flex;
+    flex-wrap: wrap; 
     border: solid black 1px;
     min-height: 25vh;
     display: flex;
     justify-content: space-evenly;
 }
 
+.picturediv{
+    flex: 0 0 250px;
+}
+
 .picture{
    width:auto;
    height: 25vh;
-   display: flex;
-   justify-content: space-between; 
+   object-fit: cover;
+   display: block;
 }
 
 
+.demoicerik{
+    flex: 1 1 350px;
+}
 
+.baslik {
+    margin-top: 0; 
+}
 
-/* yeni div bitiş*/
+.yazi {
+    word-wrap: break-word;
+    line-height: 1.5;     
+}
+/* düzenleme bitişi ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
 
 
 /* header ve footer css kısmı */

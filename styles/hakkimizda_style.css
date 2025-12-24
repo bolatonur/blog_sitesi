@@ -8,20 +8,19 @@ h1 {
     font-size: 35px;
 }
 
-/* <!-- Yeni yer sil okuyunca --> */
 
-.hakkımızda_site{
-   width: 100%;
-   height: 45vh;
-   border: solid black 2px;
+.hakkimizda_site{
+    width: 100%;
+    min-height: 45vh;
+    border: solid black 2px;
 }
 
-.hakkımızda_site h1{
+.hakkimizda_site h1{
+    word-wrap: break-word;  /* mevcut halindeki banner yerindeki yazı responsive olsun diye -onur */
     color: green;
 }
 
 
-/* <!-- Yeni yer sil okuyunca --> */
 
 .main{
 
@@ -30,17 +29,7 @@ h1 {
 
 } 
 
-/* buraya img koymazsan sadece divi değişiyomuş o yüzden img ekledim bide doğru şekillendirme böyle olmalı eğer boyu küçük dersen sadece height elemanını değişsen yetiyo */
 
-.text {
-
-    /* buradaki kod bence işlevsizdi o yüzden kaldırdım onun yerine sayfaya margin verdim ve position max/min-width/height mevzularını hallettim
-
-         max-width: 70%;
-    
-    */
-   
-}
 
 .about {
     display: flex;
