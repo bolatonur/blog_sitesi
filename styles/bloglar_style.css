@@ -10,6 +10,28 @@ h1 {
 }
 
 
+/* yeni div başlangıç OKUYUNCA KALDIR*/
+
+.blog{
+    border: solid black 1px;
+    min-height: 25vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.picture{
+   width:auto;
+   height: 25vh;
+   display: flex;
+   justify-content: space-between; 
+}
+
+
+
+
+/* yeni div bitiş*/
+
+
 /* header ve footer css kısmı */
 
 .header{
