@@ -1,27 +1,28 @@
 :root {
-    --bg-color: #E5E2DA;
-    --text-main: #1D1D1B;     
-    --text-muted: #5A5753;    
-    --accent: #D97757;        
-    --border: #D1CEC5;        
-    --card-bg: #ECE9E1;
+    --bg-color: #F4EEDF;      
+    --text-main: #1D1D1B;
+    --text-muted: #625C54;
+    --accent: #D97757;
+    --border: #E3DBCC;
+    --card-bg: #FCFBF8;
+    
     --font-serif: 'Instrument Serif', serif;
     --font-sans: 'Inter', sans-serif;
 }
 
 [data-theme='dark'] {
-    --bg-color: #161615;      
-    --text-main: #E5E2DA;     
+    --bg-color: #1E1E1C; 
+    --text-main: #E5E2DA;
     --text-muted: #A19B95;
-    --border: #2D2C2A;
-    --card-bg: #1C1C1B;
+    --border: #2D2C28;
+    --card-bg: #262623;
 }
 
 * {
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
-    transition: 0.4s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
 }
 
 body {
@@ -29,12 +30,12 @@ body {
     color: var(--text-main);
     font-family: var(--font-sans);
     line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Header anasayfa ve diğerleriyle birebir aynı kalsın diye dokunmadım */
+/* Header kısmı diğer sayfalarla aynı kalsın diye dokunmadım */
 .header {
     padding: 1.5rem 10%;
-    background-color: var(--bg-color);
     border-bottom: 2px solid var(--accent);
     display: flex;
     justify-content: space-between;
@@ -42,32 +43,89 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    background-color: var(--bg-color);
 }
 
 .sitelogo {
     font-family: var(--font-serif);
     font-size: 2.2rem;
+    font-weight: 500;
     cursor: pointer;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
 }
 
-.sitelogo span { color: var(--accent); }
+.sitelogo span {
+    color: var(--accent);
+}
 
-.butonlar { display: flex; gap: 15px; align-items: center; }
+.butonlar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
 .butonlar button {
     background: none;
     border: 1px solid transparent;
     padding: 8px 16px;
     border-radius: 20px;
+    font-family: var(--font-sans);
     font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
     color: var(--text-main);
 }
 
 .butonlar button:hover {
     color: var(--accent);
-    border-color: var(--accent);
+    border-color: var(--accent); 
 }
+/* aynı şekil tema */
+#theme-toggle {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(217, 119, 87, 0.3);
+}
+
+.footer {
+    padding: 3rem;
+    border-top: 1px solid var(--border);
+    background-color: var(--card-bg);
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    background-color: var(--bg-color);
+}
+
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 3.2rem;
+    line-height: 1.05;
+    color: var(--accent);
+    margin-bottom: 2rem;
+}
+
+p {
+    margin-bottom: 1.8rem;
+    font-size: 1.15rem;
+    color: var(--text-main);
+    opacity: 0.95;
+}
+
+
 
 /* o eski h1 olan hakkimizda_site divini sildim yerine bu bannerı çaktım */
 /* bura benim de bi siteden gördüm responsive halde ekranı küçültürken fotoya zoom out yapma muhabbetini ordan arakladım inanılmaz teknoloji o farketmediysen git pencereyi küçült bi*/
@@ -131,30 +189,20 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-#theme-toggle {
-    background: var(--accent);
-    color: white;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer {
-    padding: 3rem 0;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted);
-}
 
 /* bura ai mucizesiydi responsive bozuldu yine ai mucizesi yaptı ne işe yarıyor bilmioyorum ai nası anlayıp düzeltiuyo onu da bilmiom */
 @media screen and (max-width: 768px) {
     .about { flex-direction: column; text-align: center; }
     .photo.cift, .text.cift { order: unset; }
     .about-banner h1 { font-size: 2.5rem; }
-    .header { flex-direction: column; gap: 15px; }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+    .header {
+        padding: 1rem 5%;
+        flex-direction: column; 
+        gap: 15px;
+    }
+
 }

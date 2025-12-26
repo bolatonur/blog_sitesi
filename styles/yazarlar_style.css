@@ -1,34 +1,36 @@
 :root {
-    --bg-color: #E5E2DA;
-    --text-main: #1D1D1B;     
-    --text-muted: #5A5753;    
-    --accent: #D97757;        
-    --border: #D1CEC5;        
-    --card-bg: #ECE9E1;
+    --bg-color: #F4EEDF;      
+    --text-main: #1D1D1B;
+    --text-muted: #625C54;
+    --accent: #D97757;
+    --border: #E3DBCC;
+    --card-bg: #FCFBF8;
+    
     --font-serif: 'Instrument Serif', serif;
     --font-sans: 'Inter', sans-serif;
 }
 
 [data-theme='dark'] {
-    --bg-color: #161615;      
-    --text-main: #E5E2DA;     
+    --bg-color: #1E1E1C; 
+    --text-main: #E5E2DA;
     --text-muted: #A19B95;
-    --border: #2D2C2A;
-    --card-bg: #1C1C1B;
+    --border: #2D2C28;
+    --card-bg: #262623;
 }
 
 * {
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
-    transition: 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: var(--font-sans);
-    line-height: 1.6;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Header kısmı diğer sayfalarla aynı kalsın diye dokunmadım */
@@ -47,7 +49,10 @@ body {
 .sitelogo {
     font-family: var(--font-serif);
     font-size: 2.2rem;
+    font-weight: 500;
     cursor: pointer;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
 }
 
 .sitelogo span {
@@ -56,8 +61,8 @@ body {
 
 .butonlar {
     display: flex;
-    gap: 15px;
     align-items: center;
+    gap: 15px;
 }
 
 .butonlar button {
@@ -65,36 +70,61 @@ body {
     border: 1px solid transparent;
     padding: 8px 16px;
     border-radius: 20px;
+    font-family: var(--font-sans);
     font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
     color: var(--text-main);
 }
 
 .butonlar button:hover {
     color: var(--accent);
-    border-color: var(--accent);
+    border-color: var(--accent); 
 }
-
-
+/* aynı şekil tema */
 #theme-toggle {
     background: var(--accent);
     color: white;
     border: none;
+    padding: 10px;
+    border-radius: 50%;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
     cursor: pointer;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 10px rgba(217, 119, 87, 0.3);
 }
 
 .footer {
-    padding: 4rem 0;
-    text-align: center;
+    padding: 3rem;
     border-top: 1px solid var(--border);
+    background-color: var(--card-bg);
     color: var(--text-muted);
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    background-color: var(--bg-color);
 }
+
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 3.2rem;
+    line-height: 1.05;
+    color: var(--accent);
+    margin-bottom: 2rem;
+}
+
+p {
+    margin-bottom: 1.8rem;
+    font-size: 1.15rem;
+    color: var(--text-main);
+    opacity: 0.95;
+}
+
 
 @media screen and (max-width: 768px) {
     .header { padding: 1rem 5%; flex-direction: column; gap: 15px; }
