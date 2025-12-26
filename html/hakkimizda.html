@@ -1,73 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../styles/hakkimizda_style.css">
-	<title>Hakkımızda Sekmesi</title>
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda</title>
+    
+    <link rel="stylesheet" type="text/css" href="../styles/hakkimizda_style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <header class="header"> 
+        <div class="sitelogo" onclick="location.href='anasayfa.html'">
+            tech<span>blog</span>
+        </div>
 
-	<div class="header"> 
+        <div class="butonlar">
+            <a href="anasayfa.html"><button>Anasayfa</button></a>
+            <button style="color: var(--accent); font-weight: 600;">Hakkımızda</button>
+            <a href="bloglar.html"><button>Bloglar</button></a>
+            <a href="yazarlar.html"><button>Yazarlar</button></a>
+            
+            <button id="theme-toggle">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
 
-		<h1 class="sitelogo">Site Adı</h1>
+    <div class="about-banner">
+        <h1>Hikayemiz & <br>Vizyonumuz</h1>
+    </div>
 
-		<div class="butonlar">
-			<a href="anasayfa.html"><button>Anasayfa</button></a>
-			<button>Hakkımızda</button>
-			<a href="bloglar.html"><button>Bloglarımız</button></a>
-			<a href="yazarlar.html"><button>Yazarlar</button></a>
-		</div>
+    <div class="main">
+        <div class="about tek">
+            <div class="photo tek">
+                <img src="yalcin-supheli.heic" >
+            </div>
+            <div class="text tek">
+                <h2>Yalçın Kılıç</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar lobortis dolor, eu pretium leo varius sit amet. Curabitur ut imperdiet nisl. Cras vestibulum auctor lorem at tincidunt. Morbi cursus hendrerit augue id fermentum. Quisque consequat, orci sodales cursus blandit, felis dui lobortis nunc, nec mattis ipsum augue faucibus odio. Fusce eu purus ut mauris dignissim sagittis ut tempor massa. Donec quis nunc ipsum. Maecenas quis ante iaculis libero sodales placerat viverra ac erat.
 
+				Nulla pellentesque ante et elementum bibendum. Quisque interdum condimentum dolor ut maximus. Quisque ut risus nec augue iaculis egestas. Praesent sodales massa metus, quis sodales diam ullamcorper nec. Duis dignissim vel ex sit amet volutpat. Etiam mattis enim ex, ut pellentesque tellus lobortis eu. Nullam tempus commodo massa et congue. Nulla eu ante vitae arcu dignissim posuere. Nullam lacinia tellus non dui viverra maximus. Fusce vel sem dolor. Maecenas porta hendrerit diam, id facilisis risus rutrum a.</p>
+            </div>
+        </div>
 
-	</div>
+        <div class="about cift">
+            <div class="photo cift">
+                <img src="onur.heic">
+            </div>
+            <div class="text cift">
+                <h2>Onut Bolat</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar lobortis dolor, eu pretium leo varius sit amet. Curabitur ut imperdiet nisl. Cras vestibulum auctor lorem at tincidunt. Morbi cursus hendrerit augue id fermentum. Quisque consequat, orci sodales cursus blandit, felis dui lobortis nunc, nec mattis ipsum augue faucibus odio. Fusce eu purus ut mauris dignissim sagittis ut tempor massa. Donec quis nunc ipsum. Maecenas quis ante iaculis libero sodales placerat viverra ac erat.
 
+			Nulla pellentesque ante et elementum bibendum. Quisque interdum condimentum dolor ut maximus. Quisque ut risus nec augue iaculis egestas. Praesent sodales massa metus, quis sodales diam ullamcorper nec. Duis dignissim vel ex sit amet volutpat. Etiam mattis enim ex, ut pellentesque tellus lobortis eu. Nullam tempus commodo massa et congue. Nulla eu ante vitae arcu dignissim posuere. Nullam lacinia tellus non dui viverra maximus. Fusce vel sem dolor. Maecenas porta hendrerit diam, id facilisis risus rutrum a.</p>
+            </div>
+        </div>
+    </div>
 
-<div class="hakkimizda_site">
-   <h1>Buraya bannerımsı resim gelcek işte biz kimiz neyiz genel site tanıtımı ardından yazarlarımız diye kişisel tanıtım falan filen. Şu tarz <a href="https://charii-ngo.dcms.site/about">https://charii-ngo.dcms.site/about</a> en tepedeki yer gibi düşün </h1>
-</div>
+    <footer class="footer">
+        <p>© 2025 techblog • Tüm Hakları Saklıdır</p>
+    </footer>
 
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
 
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        themeIcon.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
 
-	<div class="main">
-		<div class="about">
-		  <img class="photo tek" src="profil.jpg">
-	       <img src="">		
-	       <div class="text tek">
-	       	  <h1 class="isim">Yalçın Kılıç</h1>
-	       	  <h3 class="hakkımda">
-	       	  	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar lobortis dolor, eu pretium leo varius sit amet. Curabitur ut imperdiet nisl. Cras vestibulum auctor lorem at tincidunt. Morbi cursus hendrerit augue id fermentum. Quisque consequat, orci sodales cursus blandit, felis dui lobortis nunc, nec mattis ipsum augue faucibus odio. Fusce eu purus ut mauris dignissim sagittis ut tempor massa. Donec quis nunc ipsum. Maecenas quis ante iaculis libero sodales placerat viverra ac erat.
-
-				Nulla pellentesque ante et elementum bibendum. Quisque interdum condimentum dolor ut maximus. Quisque ut risus nec augue iaculis egestas. Praesent sodales massa metus, quis sodales diam ullamcorper nec. Duis dignissim vel ex sit amet volutpat. Etiam mattis enim ex, ut pellentesque tellus lobortis eu. Nullam tempus commodo massa et congue. Nulla eu ante vitae arcu dignissim posuere. Nullam lacinia tellus non dui viverra maximus. Fusce vel sem dolor. Maecenas porta hendrerit diam, id facilisis risus rutrum a.</h3>
-	       </div>
-		</div>
- 
-
-		<div class="about">
-	       <img class="photo cift" src="profil.jpg">
-	       <div class="text cift">
-	       	  <h1 class="isim">Onur Bolat</h1>
-	       	  <h3 class="hakkımda">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar lobortis dolor, eu pretium leo varius sit amet. Curabitur ut imperdiet nisl. Cras vestibulum auctor lorem at tincidunt. Morbi cursus hendrerit augue id fermentum. Quisque consequat, orci sodales cursus blandit, felis dui lobortis nunc, nec mattis ipsum augue faucibus odio. Fusce eu purus ut mauris dignissim sagittis ut tempor massa. Donec quis nunc ipsum. Maecenas quis ante iaculis libero sodales placerat viverra ac erat.
-
-			Nulla pellentesque ante et elementum bibendum. Quisque interdum condimentum dolor ut maximus. Quisque ut risus nec augue iaculis egestas. Praesent sodales massa metus, quis sodales diam ullamcorper nec. Duis dignissim vel ex sit amet volutpat. Etiam mattis enim ex, ut pellentesque tellus lobortis eu. Nullam tempus commodo massa et congue. Nulla eu ante vitae arcu dignissim posuere. Nullam lacinia tellus non dui viverra maximus. Fusce vel sem dolor. Maecenas porta hendrerit diam, id facilisis risus rutrum a.</h3>
-	       </div>
-		</div>
-	</div>
-
-
-	<div class="footer">
-
-		<p>©All Rights Reserved</p>
-
-	</div>
-
- 
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+        
+    </script>
 
 </body>
 </html>

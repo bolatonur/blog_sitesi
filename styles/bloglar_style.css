@@ -1,117 +1,149 @@
+:root {
+    --bg-color: #E5E2DA;
+    --text-main: #1D1D1B;     
+    --text-muted: #5A5753;    
+    --accent: #D97757;        
+    --border: #D1CEC5;        
+    --card-bg: #ECE9E1;
+    --font-serif: 'Instrument Serif', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+[data-theme='dark'] {
+    --bg-color: #161615;      
+    --text-main: #E5E2DA;     
+    --text-muted: #A19B95;
+    --border: #2D2C2A;
+    --card-bg: #1C1C1B;
+}
 
 * {
-    font-family: "Jersey 20", sans-serif;
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
-
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-h1 {
-    color: darkred;
-    font-size: 35px;
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
 }
 
-/* sayfayı responsive hale getirmek için birkaç ufak düzenleme -onur */
-
-.blog{
+/* Header anasayfadakiyle birebir aynı kalsın diye düzenledim */
+.header {
+    padding: 1.5rem 10%;
+    background-color: var(--bg-color);
+    border-bottom: 2px solid var(--accent);
     display: flex;
-    flex-wrap: wrap; 
-    border: solid black 1px;
-    min-height: 25vh;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.picturediv{
-    flex: 0 0 250px;
-}
-
-.picture{
-   width:auto;
-   height: 25vh;
-   object-fit: cover;
-   display: block;
-}
-
-
-.demoicerik{
-    flex: 1 1 350px;
-}
-
-.baslik {
-    margin-top: 0; 
-}
-
-.yazi {
-    word-wrap: break-word;
-    line-height: 1.5;     
-}
-/* düzenleme bitişi ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
-
-
-
-/* header ve footer css kısmı */
-
-.header{
-
-	padding: 20px 25px;
-    background-color: darkgray;
-    display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .sitelogo {
-
-	text-align: center;
-
-	flex-grow: 4;
-
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    cursor: pointer;
 }
 
-.butonlar{
+.sitelogo span {
+    color: var(--accent);
+}
 
-	display: flex;
+.butonlar {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.butonlar button {
+    background: none;
+    border: 1px solid transparent;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    cursor: pointer;  /*baba buna kadar düşündü bunu gemini değil ben ekledim öyle bi info*/
+    color: var(--text-main);
+}
+
+.butonlar button:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.blog-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 20px;
+}
+
+.blog {
+    display: flex;
     flex-wrap: wrap; 
-    gap: 15px; 
-    justify-content: flex-end; 
-    flex-grow: 2;
-
-
+    gap: 20px;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
 }
 
-button{
-
-	font-size: 25px;
+.picturediv {
+    flex: 0 0 280px;
 }
 
-
-.footer{
-	padding-top: 10px;
-	padding-bottom: 10px;
-	text-align: center;
-	background-color: darkgray;
+.picture {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: grayscale(10%) contrast(105%);
 }
 
+.demoicerik {
+    flex: 1 1 400px; /*ne diyo inan bilmiyom bunu da claude baba düzeltti ben beceremedim*/
+}
 
+.baslik {
+    font-family: var(--font-serif);
+    color: var(--accent);
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.1;
+}
+
+.yazi {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    opacity: 0.9;
+}
+
+#theme-toggle {
+    background: var(--accent);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    padding: 4rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
 
 @media screen and (max-width: 768px) {
-    .header {
-        flex-direction: column; /* Logo üstte, butonlar altta */
-        text-align: center;
-        gap: 20px;
-    }
-
-    .butonlar {
-        justify-content: center; /* Mobilde butonları ortala */
-        width: 100%;
-    }
-
-    button {
-        font-size: 20px; /* Mobilde daha okunabilir boyut */
-        padding: 8px 12px;
-    }
+    .blog { flex-direction: column; }
+    .picturediv { flex: 1; }
+    .header { padding: 1rem 5%; }
 }
-

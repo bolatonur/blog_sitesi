@@ -1,75 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../styles/bloglar_style.css">
-	<title>Blog Sekmesi</title>
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap" rel="stylesheet">
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloglar</title>
+    
+    <link rel="stylesheet" href="../styles/bloglar_style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
 
-	<div class="header"> 
+    <header class="header">
+        <div class="sitelogo" onclick="location.href='anasayfa.html'">
+            tech<span>blog</span>
+        </div>
 
-		<h1 class="sitelogo">Site Adı</h1>
+        <div class="butonlar">
+            <a href="anasayfa.html"><button>Anasayfa</button></a>
+            <a href="hakkimizda.html"><button>Hakkımızda</button></a>
+            <button style="color: var(--accent); font-weight: 600;">Bloglar</button>
+            <a href="yazarlar.html"><button>Yazarlar</button></a>
+            
+            <button id="theme-toggle">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
 
-		<div class="butonlar">
-			<a href="anasayfa.html"><button>Anasayfa</button></a>
-			<a href="hakkimizda.html"><button>Hakkımızda</button></a>
-			<button>Bloglarımız</button>
-			<a href="yazarlar.html"><button>Yazarlar</button></a>
-		</div>
+    <div class="blog-container">
+        <div class="blog">
+            <div class="picturediv">
+                <img class="picture" src="https://images.pexels.com/photos/53140/snake-ball-python-python-regius-beauty-53140.jpeg" alt="Python Blog">
+            </div>        
+            <div class="demoicerik">
+                <h1 class="baslik">Python ile yt mp3 dönüştürücü yapımı</h1>
+                <p class="yazi">Evet bu yazımızda kotagum dili üzerinden nasıl pastırmalı pide yapcağımızı ve bunun python ile yt dönüştürücü ile alakasından bahsedicez.</p>
+            </div>
+        </div>
 
+        <div class="blog">
+            <div class="picturediv">
+                <img class="picture" src="https://images.pexels.com/photos/53140/snake-ball-python-python-regius-beauty-53140.jpeg" alt="Python Blog">
+            </div>        
+            <div class="demoicerik">
+                <h1 class="baslik">Python ile yt mp3 dönüştürücü yapımı</h1>
+                <p class="yazi">Evet bu yazımızda kotagum dili üzerinden nasıl pastırmalı pide yapcağımızı ve bunun python ile yt dönüştürücü ile alakasından bahsedicez.</p>
+            </div>
+        </div>
 
-	</div>
+        <div class="blog">
+            <div class="picturediv">
+                <img class="picture" src="https://images.pexels.com/photos/53140/snake-ball-python-python-regius-beauty-53140.jpeg" alt="Python Blog">
+            </div>        
+            <div class="demoicerik">
+                <h1 class="baslik">Python ile yt mp3 dönüştürücü yapımı</h1>
+                <p class="yazi">Evet bu yazımızda kotagum dili üzerinden nasıl pastırmalı pide yapcağımızı ve bunun python ile yt dönüştürücü ile alakasından bahsedicez.</p>
+            </div>
+        </div>
+    </div>
 
-    <div class="blog">
-    	   <div class="picturediv">
-	          <img class="picture" src="https://images.pexels.com/photos/53140/snake-ball-python-python-regius-beauty-53140.jpeg">
-	       </div>		
-	       <div class="demoicerik">
-	       	  <h1 class="baslik">Python ile yt mp3 dönüştürücü yapımı</h1>
-	       	  <h3 class="yazi">Evet bu yazımızda kotagum dili üzerinden nasıl pastırmalı pide yapcağımızı ve bunun python ile yt dönüüştürücü ile alakassından bahsedicez.</h3>
-	       </div>
-	</div>
+    <footer class="footer">
+        <p>© 2025 techblog • Tüm Hakları Saklıdır</p>
+    </footer>
 
-	    <div class="blog">
-    	   <div>
-	          <img class="picture" src="https://images.pexels.com/photos/53140/snake-ball-python-python-regius-beauty-53140.jpeg">
-	       </div>		
-	       <div class="demoicerik">
-	       	  <h1 class="baslik">Python ile yt mp3 dönüştürücü yapımı</h1>
-	       	  <h3 class="yazi">Evet bu yazımızda kotagum dili üzerinden nasıl pastırmalı pide yapcağımızı ve bunun python ile yt dönüüştürücü ile alakassından bahsedicez.</h3>
-	       </div>
-	</div>
+    <script>
+        // anasayfadaki tema değiştirme kodunu aynen buraya da ekledim
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
 
-	    <div class="blog">
-    	   <div>
-	          <img class="picture" src="https://images.pexels.com/photos/53140/snake-ball-python-python-regius-beauty-53140.jpeg">
-	       </div>		
-	       <div class="demoicerik">
-	       	  <h1 class="baslik">Python ile yt mp3 dönüştürücü yapımı</h1>
-	       	  <h3 class="yazi">Evet bu yazımızda kotagum dili üzerinden nasıl pastırmalı pide yapcağımızı ve bunun python ile yt dönüüştürücü ile alakassından bahsedicez.</h3>
-	       </div>
-	</div>
+        // tarayıcı hafızasından temayı kontrol et
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        themeIcon.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
 
-
-
-	<div class="footer">
-
-		<p>©All Rights Reserved</p>
-
-	</div>
-
-
-
-
-
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+    </script>
 
 </body>
 </html>

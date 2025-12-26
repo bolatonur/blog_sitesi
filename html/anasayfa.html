@@ -1,71 +1,97 @@
+
+<!--
+
+Yapılacaklar:
+
+js kodlarını ayrı klasöre geçir 
+fotoğraflar ve yazılar link olcak 
+anasayfa düzenini oturtak nerde ne içeriği olcak nerde neyin resmi şuan rastgele ayhancan template duruyor
+anasayfa hakkında yazarlar diye tuşlar var ya sağ üstte onun sıralamasını Anasayfa Bloglar Yazarlar Hakkında yaosak daha mantıklı olcak gibi
+2 renk paleti var ilki anasayfadaki diğeri öteki sayfalardaki (backgroun renklerini karşılaştıe beyaz daha sarımsız gri daha kahverengimsiz ana sayfada) beğenip birini hepsini aynı yapmak lazım
+eğer palet anasayfadaki olcaksa footer eski renkte kalmış onu güncellemek gerek
+bi de ben karar veremedim hali hazırda hoover var da yine de içinde bulunduğumuz sayfa sağ üstteki butonlarda belli olsun mu gözüksün mü
+yeter bu kadar ben yatıyom artık
+
+
+--> 
+
+
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Anasayfa</title>
-	<link rel="stylesheet" type="text/css" href="../styles/anasayfa_style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa</title>
+    
+    <link rel="stylesheet" href="../styles/anasayfa_style.css">
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--crossorigin güvenlikle ilgiliymiş geç yükleniyodu bunla çözüldü. preconnect de aynı mevzunun uygun adlandırmasıymış bakarsın googledan merak edersen -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
 
-	<div class="header"> 
-
-		<h1 class="sitelogo">Site Adı</h1>
-
-		<div class="butonlar">
-			<button>Anasayfa</button>
-			<a href="hakkimizda.html"><button>Hakkımızda</button></a>
-			<a href="bloglar.html"><button>Bloglarımız</button></a>
-			<a href="yazarlar.html"><button>Yazarlar</button></a>
-		</div>
-
-
-	</div>
-
-
-	<div class="content">
-      
-
-
-      <div class="main">
-        <h2>SON DAKİKA!</h2>
-        <h5>Toprak Razgatlıoğlu 3’üncü kez dünya şampiyonu</h5>
-
-        <img src="https://img.redbull.com/images/c_crop,x_0,y_0,h_960,w_1920/c_fill,w_1350,h_675/q_auto,f_auto/redbullcom/2025/9/27/n2buebvpiy4dk7uqr7ag/toprak-razgatlioglu-ispanya-2025" style="width:900px; max-width:100%; height:auto;">
-
-        <p>2025 sezonunun son durağı İspanya'daki Jerez pistiydi. Red Bull sporcusu Toprak Razgatlıoğlu, hafta sonuna şampiyonluk parolasıyla başladı ve bunun için ilk fırsat cumartesi günkü ilk ana yarıştı. Temsilcimiz yarışa pol pozisyonundan başladı ancak yarışı ikinci sırada tamamlayınca şampiyonluk ilanı pazar gününe kaldı.
-        Pazar günü koşulan superpole yarışında Bulega'nın teması sonrası puan alamayan Toprak, ikinci ana yarışa daha motive biçimde şampiyonluk ilanı için çıktı. Superpole'deki kaza sonrası yarışa 10. sıradan başlayan Toprak, ihtiyacı olan üç puan için temkinli bir sürüş gerçekleştirse de yarışı üçüncü bitirip şampiyonluğunu ilan etti. 2021 sezonunda kariyerinin ilk Dünya Superbike Şampiyonası şampiyonluğuna ulaşan Toprak Razgatlıoğlu, 2024 sezonunda üst üste 13 yarış kazanarak bu alandaki rekorun sahibi olmuştu. 2025 sezonunda ise koşulan 36 yarışın 21'ini kazanan Toprak tüm bu başarıları yeni bir şampiyonlukla daha taçlandırmış oldu. Bu sonuçla biri Yamaha'da (2021) ve ikisi BMW'de (2024 ve 2025) olmak üzere toplam üç Superbike şampiyonluğu ile MotoGP'ye geçiş yapacak Toprak, yeni macerasındaki rakiplerine de gözdağı vermiş oldu. ©redbull.com.tr </p>
-
-        <div class="adds">
-          <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg" style="width:300px; max-width:100%; height:auto;" >
-          <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak7.jpg" style="width:300px; max-width:100%; height:auto;">
-
+    <header class="header">
+        <div class="sitelogo" onclick="location.href='index.html'">
+            tech<span>blog</span>
         </div>
-      </div>
+
+        <div class="butonlar">
+            <button style="color: var(--accent); font-weight: 600;">Anasayfa</button>
+            <button onclick="location.href='hakkimizda.html'">Hakkımızda</button>
+            <button onclick="location.href='bloglar.html'">Bloglar</button>
+            <button onclick="location.href='yazarlar.html'">Yazarlar</button>
+            
+            <button id="theme-toggle">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="content">
+        <main class="main">
+            <h2>Toprak Razgatlıoğlu 3’üncü kez dünya şampiyonu</h2>
+            <img src="https://img.redbull.com/images/c_crop,x_0,y_0,h_960,w_1920/c_fill,w_1350,h_675/q_auto,f_auto/redbullcom/2025/9/27/n2buebvpiy4dk7uqr7ag/toprak-razgatlioglu-ispanya-2025" alt="Toprak Razgatlioglu">
+            <p>2025 sezonunun son durağı İspanya'daki Jerez pistiydi. Red Bull sporcusu Toprak Razgatlıoğlu, hafta sonuna şampiyonluk parolasıyla başladı ve bunun için ilk fırsat cumartesi günkü ilk ana yarıştı. Temsilcimiz yarışa pol pozisyonundan başladı ancak yarışı ikinci sırada tamamlayınca şampiyonluk ilanı pazar gününe kaldı. Pazar günü koşulan superpole yarışında Bulega'nın teması sonrası puan alamayan Toprak, ikinci ana yarışa daha motive biçimde şampiyonluk ilanı için çıktı. Superpole'deki kaza sonrası yarışa 10. sıradan başlayan Toprak, ihtiyacı olan üç puan için temkinli bir sürüş gerçekleştirse de yarışı üçüncü bitirip şampiyonluğunu ilan etti.</p>
 
 
-      <div class="sidebar">
-        <h2>Haberler</h2>
-        <h5> Temsilcimiz Ayhancan Güven Şampiyon!</h5>
-        <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1NU7Zr.img?w=768&h=512&m=6&x=577&y=290&s=167&d=167" alt="Şampiyonluk fotoğrafı" style="width:700px; max-width:100%; height:auto;">
-        <p>Red Bull sporcusu Ayhancan Güven, 2025 Almanya Binek Otomobil Şampiyonası’nda (DTM) sezonun final yarışını kazanarak DTM tarihinde şampiyonluk kazanan ilk Türk pilot oldu. Güven, bu başarısıyla Türkiye’nin otomobil sporlarındaki en büyük başarısına imza attı.</p>
-        <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1NTVL6.img?w=768&h=512&m=6" style="width:700px; max-width:100%; height:auto;">
+            <div class="small-picture">
+                <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg" alt="Pist detay">
+                <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak7.jpg" alt="Kutlama">
+            </div>
+
+        </main>
+
+        <aside class="sidebar">
+            <h2>Popüler</h2>
+            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1NU7Zr.img?w=768&h=512&m=6" alt="Ayhancan Güven">
+            <p>Red Bull sporcusu Ayhancan Güven, 2025 Almanya Binek Otomobil Şampiyonası’nda (DTM) sezonun final yarışını kazanarak DTM tarihinde şampiyonluk kazanan ilk Türk pilot oldu. Güven, bu başarısıyla Türkiye’nin otomobil sporlarındaki en büyük başarısına imza attı.</p>
+            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1NTVL6.img?w=768&h=512&m=6" style="width:700px; max-width:100%; height:auto;">
         <p>FIA sürücü sınıflandırmasında ’Altın’ kategoride yer alan ve bu klasmandaki tek Türk pilot olan Ayhancan Güven, aynı zamanda Porsche Fabrika Pilotu olarak uluslararası arenada Türkiye’yi başarıyla temsil ediyor. © İHA </p>
-      </div>
-
+        </aside>
     </div>
 
+    <footer class="footer">
+        <p>© 2025 techblog • Aşk Ve Sevgiyle Tasarlandı </p>
+    </footer>
 
-	<div class="footer">
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
 
-		<p>©All Rights Reserved</p>
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        themeIcon.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
 
-	</div>
-
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+    </script>
 </body>
 </html>
