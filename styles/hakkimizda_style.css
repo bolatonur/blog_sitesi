@@ -190,7 +190,21 @@ p {
 }
 
 
-/* bura ai mucizesiydi responsive bozuldu yine ai mucizesi yaptı ne işe yarıyor bilmioyorum ai nası anlayıp düzeltiuyo onu da bilmiom */
+
+@media screen and (max-width: 550px) {
+    .newbtn {
+        display: grid;
+        /* 2 kolon her biri 1fr */
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+    }
+    
+    .newbtn button {
+        width: 100%; 
+    }
+}
+
+
 @media screen and (max-width: 768px) {
     .about { flex-direction: column; text-align: center; }
     .photo.cift, .text.cift { order: unset; }
