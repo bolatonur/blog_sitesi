@@ -206,6 +206,7 @@ p {
     }
     .header {
         padding: 1rem 5%;
+        display: flex;
         flex-direction: column; 
         gap: 15px;
     }

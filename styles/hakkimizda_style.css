@@ -133,7 +133,7 @@ p {
 
 
 
-/* o eski h1 olan hakkimizda_site divini sildim yerine bu bannerı çaktım */
+
 /* bura benim de bi siteden gördüm responsive halde ekranı küçültürken fotoya zoom out yapma muhabbetini ordan arakladım inanılmaz teknoloji o farketmediysen git pencereyi küçült bi*/
 .about-banner {
     width: 100%;
@@ -172,13 +172,14 @@ p {
 .text.cift { order: 1; }
 
 .photo {
-    flex: 0 0 450px;
+    flex: 0 0 550px;
     max-width: 100%;
+    height: auto !important;
 }
 
 .text {
     flex: 1;
-    min-width: 300px;
+    min-width: 400px;
 }
 
 .text h2 {
@@ -190,9 +191,12 @@ p {
 
 .photo img {
     width: 100%;
+    height: 100%;
     border-radius: 8px;
     filter: grayscale(10%);
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: block;
+    object-fit: cover;
 }
 
 
@@ -208,7 +212,12 @@ p {
     .newbtn button {
         width: 100%; 
     }
+
+    .text {
+        min-width: 100%; /* Artık ekran ne kadar darsa o kadar olacak */
+    }
 }
+
 
 
 @media screen and (max-width: 768px) {
@@ -226,3 +235,17 @@ p {
     }
 
 }
+
+
+ @media screen and (max-width: 1050px) {
+
+
+    .about { flex-direction: column; text-align: center; }
+
+    .photo.cift, .text.cift { order: unset; }
+
+    .about-banner h1 { font-size: 2.5rem; }
+
+
+
+} 
