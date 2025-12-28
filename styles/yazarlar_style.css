@@ -40,10 +40,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: transform 0.4s ease;
     background-color: var(--bg-color);
+}
+
+.header.gizli {
+    transform: translateY(-100%); 
 }
 
 .sitelogo {
