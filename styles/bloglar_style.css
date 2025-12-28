@@ -156,11 +156,15 @@ p {
     object-fit: cover;
     border-radius: 4px;
     filter: grayscale(10%) contrast(105%);
+    flex: 0 0 400px;
+    max-width: 100%;
 }
 
-.demoicerik {
-    flex: 1 1 400px; /*ne diyo inan bilmiyom bunu da claude baba düzeltti ben beceremedim*/
+.demoicerik{
+    flex: 1;
+    min-width: 300px;
 }
+
 
 .baslik {
     font-family: var(--font-serif);
