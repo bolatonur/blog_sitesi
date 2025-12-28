@@ -149,6 +149,7 @@ p {
 @media screen and (max-width: 768px) {
     .header { 
         padding: 1rem 5%; 
+        display: flex;
         flex-direction: column; 
         gap: 15px; }
 }
