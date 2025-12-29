@@ -169,6 +169,7 @@ img {
 }
 
 .footer {
+    padding-bottom: 1.5rem;
     padding: 3rem;
     border-top: 1px solid var(--border);
     background-color: var(--card-bg);

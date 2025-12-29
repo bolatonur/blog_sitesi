@@ -41,4 +41,3 @@ window.addEventListener('scroll', function() {
             
     sonKaydirma = suAnkiKaydirma <= 0 ? 0 : suAnkiKaydirma;
 }, false);
-

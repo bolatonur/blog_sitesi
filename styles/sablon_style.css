@@ -137,6 +137,38 @@ p {
     opacity: 0.95;
 }
 
+.yazar-div{
+   padding: 0px;
+   margin: 20px;
+   display: flex;
+}
+
+.imgcircle{
+    all: unset;
+    width:6%;
+    height: 7%;
+    padding: 0;
+
+}
+
+.yazar{
+    margin-left: 2%;
+    margin-top: 1.5%;
+    font-size:1.2rem;
+}
+
+.tarih{
+    margin-left: 40%;
+    margin-top: 1.5%;
+    font-size:1.2rem;
+}
+
+.okunma{
+    margin-left:5%;
+    margin-top: 1.5%;
+    font-size:1.2rem;
+}
+
 img {
     display: block;
     margin-left: auto;
@@ -162,6 +194,7 @@ img {
 
 .footer {
     padding: 3rem;
+    padding-bottom: 1.5rem;
     border-top: 1px solid var(--border);
     background-color: var(--card-bg);
     color: var(--text-muted);
