@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yazarlarımız</title>
-    
     <link rel="stylesheet" type="text/css" href="../styles/yazarlar_style.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -19,11 +17,9 @@
         </div>
 
         <div class="butonlar">
-
             <div class="newbtn">
                 <a href="anasayfa.html"><button>Anasayfa</button></a>
                 <a href="bloglar.html"><button>Bloglar</button></a>
-                <button style="color: var(--accent); font-weight: 600;">Yazarlar</button>
                 <a href="hakkimizda.html"><button>Hakkımızda</button></a>
             </div>
             
@@ -33,13 +29,107 @@
         </div>
     </div>
 
+    <div class="author-line">
+        <img class="imgcircle active-author" src="../imgs/yalcin-circle.jpg" onclick="switchAuthor('yalcin', this)">
+        <img class="imgcircle" src="../imgs/onur-circle.jpg" onclick="switchAuthor('onur', this)">
+    </div>
+
+    <div class="bordery"></div>
+
+    <div class="mother">
+        <div id="yalcin-posts" class="author-posts" style="display: block;">
+            <div class="content-line">
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Yalçın Yazı 1</p>
+                    </a>
+                </div>
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Yalçın Yazı 2</p>
+                    </a>
+                </div>
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Yalçın Yazı 3</p>
+                    </a>
+                </div>
+            </div>
+            <div class="content-line">
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Yalçın Yazı 4</p>
+                    </a>
+                </div>
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Yalçın Yazı 5</p>
+                    </a>
+                </div>
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Yalçın Yazı 6</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="onur-posts" class="author-posts" style="display: none;">
+            <div class="content-line">
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Onur Yazı 1</p>
+                    </a>
+                </div>
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Onur Yazı 2</p>
+                    </a>
+                </div>
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Onur Yazı 3</p>
+                    </a>
+                </div>
+            </div>
+            <div class="content-line">
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Onur Yazı 4</p>
+                    </a>
+                </div>
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Onur Yazı 5</p>
+                    </a>
+                </div>
+                <div class="author-content">
+                    <a href="sablon.html">  
+                        <img src="https://cdnuploads.aa.com.tr/uploads/userFiles/9c85db40-ef31-40fe-a989-05c7e506d5d0/2025%2F10%2F19102025%2Ftoprak6.jpg">
+                        <p class="kucuk-baslık">Onur Yazı 6</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="footer">
         <p>© 2025 techblog • Tüm Hakları Saklıdır</p>
         <p>İletişim için - tehcblog@gmail.com </p> 
     </div>
 
-    <script src="../scripts/yazarlar_script.js">
-    </script>
+    <script src="../scripts/yazarlar_script.js"></script>
 
 </body>
 </html>

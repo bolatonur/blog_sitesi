@@ -143,6 +143,12 @@ p {
    display: flex;
 }
 
+a {
+    width: 100%;
+    text-decoration: none;
+}
+
+
 .imgcircle{
     all: unset;
     width:6%;
@@ -152,19 +158,23 @@ p {
 }
 
 .yazar{
-    margin-left: 2%;
-    margin-top: 1.5%;
+    margin-left: 3%;
+    margin-top: 3.5%;
     font-size:1.2rem;
 }
 
 .tarih{
-    margin-left: 40%;
+    text-align: right;
+    width: 40%;
+    margin-left: 15%;
     margin-top: 1.5%;
     font-size:1.2rem;
 }
 
 .okunma{
-    margin-left:5%;
+    text-align: right;
+    width: 55%;
+    margin-left:0%;
     margin-top: 1.5%;
     font-size:1.2rem;
 }
