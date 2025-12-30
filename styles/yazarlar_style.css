@@ -125,13 +125,13 @@ a {
 }
 
 .author-line {
-    padding: 3%;
+    padding: 30px;
     padding-bottom: 0;
     width: 100%;
     display: flex;
     justify-content: center; 
     align-items: center;    
-    gap: 250px;             
+    gap: 300px;             
 
 }
 
@@ -140,19 +140,19 @@ a {
 
     display: flex;
     justify-content: center; 
-    margin-bottom: 3%;
+    margin-bottom: 30px;
  
-    gap: 250px;             
+    gap: 290px;             
 
 }
 
 .bordery {
     position: absolute;
-    left: 7.5%;
+    left: 5%;
     width: 85%;
     border-bottom: 1px solid var(--border);
-    margin-top: -3%;
-    margin-bottom: 3%;
+    margin-top: -30px;
+    margin-bottom: 30px;
 }
 
 .imgcircle {
@@ -171,26 +171,28 @@ a {
     transform: scale(1.1);
 }
 
-.content-line {
-    margin: 4%;
+.content-line {  
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.author-content { 
+    height: auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
-.author-content {
-    width: 30%;
-}
-
-.author-content img {
+.author-content img { 
     width: 100%;
-    height: 225px;
-    max-width: 100%;
-    object-fit: cover;
     aspect-ratio: 16 / 9;
+    object-fit: cover;
     border-radius: 4px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     filter: grayscale(10%) contrast(105%);
     display: block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .kucuk-baslık {
@@ -218,14 +220,20 @@ p {
     opacity: 0.95;
 }
 
-@media screen and (max-width: 550px) {
-    .newbtn {
-        display: grid;
-        grid-template-columns: 1fr 1fr; 
-        gap: 10px;
+
+
+
+
+@media screen and (max-width: 1100px) {
+    .content-line {
+        grid-template-columns: repeat(2, 1fr);
     }
-    .newbtn button { width: 100%; }
+    /* Aradaki 250px'lik devasa boşluğu daraltmaya başlıyoruz */
+    .author-line, .author-name-line {
+        gap: 250px; 
+    }
 }
+
 
 @media screen and (max-width: 768px) {
     .header { 
@@ -234,24 +242,37 @@ p {
         flex-direction: column; 
         gap: 15px; 
     }
-    .content-line { 
-        flex-direction: column; 
-        align-items: center; 
+
+    .content-line {
+        grid-template-columns: 1fr;
+        margin: 20px 10px; 
     }
-    .author-content { 
-        width: 100%; 
-        margin-bottom: 2rem; 
+
+ 
+    .author-line, .author-name-line {
+        gap: 150px !important;
     }
-    .author-content img {
-        height: auto;
-    }
+
     .imgcircle { 
-        width: 60px; 
-        height: 60px; 
+        width: 70px; 
+        height: 70px; 
     }
-    .author-line,
-    .author-name-line { 
-        gap: 50px; 
+
+}
+
+
+@media screen and (max-width: 550px) {
+    .newbtn {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
     }
+    .newbtn button { width: 100%; }
+
+    .content-line {
+        grid-template-columns: 1fr; 
+        margin: 20px 10px;
+    }
+
 
 }
