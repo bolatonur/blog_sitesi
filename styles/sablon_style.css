@@ -137,11 +137,43 @@ p {
     opacity: 0.95;
 }
 
+/* yeni kod başlangıç */
+
 .yazar-div{
-   padding: 0px;
-   margin: 20px;
-   display: flex;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
+
+.yazar {
+    display: flex;
+    align-items: center; 
+    gap: 12px;          
+    margin-bottom: 20px;
+}
+
+.yazaradi {
+    margin: 0;           
+    font-size: 1.1rem;
+}
+
+.yazar a {
+    width: fit-content;
+    display: block;     
+    text-decoration: none;
+}
+
+.yazar a, 
+.yazar a:visited, 
+.yazar a:hover, 
+.yazar a:active {
+    color: inherit;        
+    text-decoration: none; 
+    outline: none;         
+}
+
+
+/* yeni kod bitiş */
 
 a {
     width: 100%;
@@ -149,15 +181,20 @@ a {
 }
 
 
+
 .imgcircle{
-    all: unset;
-    width:6%;
-    height: 7%;
-    padding: 0;
+
+    display: block;
+    max-width: 70px;
+    height: auto;
+    border-radius: 4px;
+    filter: grayscale(10%) contrast(105%);
 
 }
 
-.yazar{
+/*
+
+.yazaradi{
     margin-left: 3%;
     margin-top: 3.5%;
     font-size:1.2rem;
@@ -178,8 +215,9 @@ a {
     margin-top: 1.5%;
     font-size:1.2rem;
 }
+*/
 
-img {
+.fixedphoto {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -188,7 +226,7 @@ img {
     border-radius: 4px;
     margin-bottom: 2rem;
     filter: grayscale(10%) contrast(105%);
-}
+} 
 
 .small-picture {
     display: grid;
