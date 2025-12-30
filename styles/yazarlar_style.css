@@ -131,7 +131,7 @@ a {
     display: flex;
     justify-content: center; 
     align-items: center;    
-    gap: 300px;             
+    gap: 300px;                             /* yazar fotolar arası gap */  
 
 }
 
@@ -142,7 +142,7 @@ a {
     justify-content: center; 
     margin-bottom: 30px;
  
-    gap: 290px;             
+    gap: 290px;                                 /* yazar isimler arası gap */
 
 }
 
@@ -175,7 +175,7 @@ a {
     margin: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 30px;                                 /* metinler ve fotolar arası gap */ 
 }
 
 .author-content { 
