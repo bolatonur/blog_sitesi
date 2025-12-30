@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje Arşivi: Python ile Görüntü İşleme Destekli Yüz Tanıma Sistemi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F4EEDF;      
+            --text-main: #1D1D1B;
+            --text-muted: #625C54;
+            --accent: #D97757;
+            --border: #E3DBCC;
+            --card-bg: #FCFBF8;
+            --font-serif: 'Instrument Serif', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        [data-theme='dark'] {
+            --bg-color: #1E1E1C; 
+            --text-main: #E5E2DA;
+            --text-muted: #A19B95;
+            --border: #2D2C28;
+            --card-bg: #262623;
+        }
+
+        * {
+            box-sizing: border-box; 
+            padding: 0; 
+            margin: 0; 
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: white;
+        }
+
+        .header {
+            padding: 1.5rem 10%;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color);
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.4s ease;
+        }
+
+        .header.gizli {
+            transform: translateY(-100%); 
+        }
+
+        .sitelogo {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+        }
+
+        .sitelogo span {
+            color: var(--accent);
+        }
+
+        .butonlar {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .butonlar button {
+            background: none;
+            border: 1px solid transparent;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        .butonlar button:hover {
+            color: var(--accent);
+            border-color: var(--accent); 
+        }
+
+        #theme-toggle {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(217, 119, 87, 0.3);
+        }
+
+        .content {
+            display: flex;
+            max-width: 1300px;
+            margin: 4rem auto;
+            gap: 5rem;
+            padding: 0 20px;
+        }
+
+        .main {
+            flex: 65%;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 3.2rem;
+            line-height: 1.05;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        p {
+            margin-bottom: 1.8rem;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            opacity: 0.95;
+        }
+
+        .yazar-div{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .yazar {
+            display: flex;
+            align-items: center; 
+            gap: 12px;           
+            margin-bottom: 20px;
+        }
+
+        .yazaradi {
+            margin: 0;          
+            font-size: 1.1rem;
+        }
+
+        .yazar a {
+            width: fit-content;
+            display: block;     
+            text-decoration: none;
+        }
+
+        .yazar a, 
+        .yazar a:visited, 
+        .yazar a:hover, 
+        .yazar a:active {
+            color: inherit;         
+            text-decoration: none; 
+            outline: none;           
+        }
+
+        a {
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .imgcircle{
+            display: block;
+            max-width: 70px;
+            height: auto;
+            border-radius: 4px;
+            filter: grayscale(10%) contrast(105%);
+        }
+
+        .okunma{
+            margin-left: 30px;
+        }
+
+        .fixedphoto {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            aspect-ratio: 16 / 9;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            filter: grayscale(10%) contrast(105%);
+            object-fit: cover;
+        } 
+
+        .small-picture {
+            display: grid;
+            grid-template-columns: 1fr 1fr;  
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .small-picture img {
+            width: 100%;
+            margin: 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            aspect-ratio: 16 / 9;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            filter: grayscale(10%) contrast(105%);
+        }
+
+        .footer {
+            padding: 3rem;
+            padding-bottom: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            background-color: var(--bg-color);
+        }
+
+        @media screen and (max-width: 550px) {
+            .newbtn {
+                display: grid;
+                grid-template-columns: 1fr 1fr; 
+                gap: 10px;
+            }
+            .newbtn button {
+                width: 100%; 
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            h2 {
+                font-size: 2.5rem;
+            }
+            .header {
+                padding: 1rem 5%;
+                display: flex;
+                flex-direction: column; 
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="sitelogo" onclick="location.href='../html/anasayfa.html'">
+            tech<span>blog</span>
+        </div>
+
+        <div class="butonlar">
+            <div class="newbtn">
+                <button onclick="location.href='../html/anasayfa.html'">Anasayfa</button>
+                <button onclick="location.href='../html/bloglar.html'">Bloglar</button>
+                <button onclick="location.href='../html/hakkimizda.html'">Hakkımızda</button>
+            </div>
+
+            <button id="theme-toggle">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="content">
+        <main class="main">
+            <h1>Proje Arşivi: Python ile Görüntü İşleme Destekli Yüz Tanıma Sistemi</h1>
+
+            <div class="yazar-div">
+                <div style="flex-grow: 1;" class="yazar">
+                    <a href="yazarlar.html"><img class="imgcircle" src="../imgs/yalcin-circle.jpg"></a>
+                    <p class="yazaradi"><a href="../html/yazarlar.html"><b>Yazar:</b>Yalçın Kılıç</a></p>
+                </div>
+                <p class="tarih"><b>🗓️ 01 Ocak 2026</b></p>
+                <p class="okunma"><b>👀 1.890 Görüntülenme</b></p>
+            </div>
+
+            <img class="fixedphoto" src="https://www.cultofmac.com/wp-content/uploads/2017/09/face-id-logo.jpg">
+            
+            <p>Görüntü işleme, bilgisayar vizyonunun temelini oluşturur ve yüz tanıma, bu alanın en dikkat çekici uygulamalarından biridir. Bu proje, Python ve açık kaynak kütüphanelerini kullanarak basit ama etkili bir yüz tanıma sistemi geliştirmeyi amaçlamaktadır. Sistemimiz, canlı kamera akışından yüzleri tespit edecek, bilinen yüzlerle karşılaştıracak ve bir eşleşme durumunda kimlik doğrulaması yapabilecektir.
+
+            
+
+            <b>Mimari Adım 1: Yüz Tespiti (Face Detection)</b><br>
+            Yüz tanıma sürecinin ilk adımı, bir görüntü içerisindeki yüzlerin konumunu belirlemektir. OpenCV kütüphanesi ve Haar Cascade sınıflandırıcıları, bu görev için oldukça verimlidir. Genellikle göz ve burun gibi belirli özelliklere odaklanan bu sınıflandırıcılar, bir yüzün varlığını hızlıca tespit etmemizi sağlar. Canlı kamera akışı üzerinden her kareyi analiz ederek gerçek zamanlı yüz tespiti yapmak, sistemimizin temelidir.
+
+            <b>Mimari Adım 2: Yüz Özellik Çıkarımı (Feature Extraction)</b><br>
+            Bir yüz bulunduktan sonraki kritik adım, onu diğer yüzlerden ayırt edici özelliklerini çıkarmaktır. Dlib kütüphanesi, 68 veya 5 noktadan oluşan "landmark" tespiti ile yüzün anatomik özelliklerini çıkarır. Bu noktalar, yüzün geometrik yapısını temsil eden bir vektör oluşturur. Ardından, bu vektörü daha küçük ve karşılaştırılabilir bir "embedding"e dönüştürmek için derin öğrenme modelleri (örneğin FaceNet) kullanılır.
+
+            <b>Mimari Adım 3: Yüz Karşılaştırma ve Kimlik Doğrulama</b><br>
+            Çıkarılan yüz embedding'leri, veritabanımızdaki (önceden kaydedilmiş) bilinen kişilerin embedding'leriyle karşılaştırılır. Karşılaştırma, genellikle Öklid mesafesi veya kosinüs benzerliği gibi metriklerle yapılır. Belirlenen bir eşik değerinin altındaki mesafeler, yüzlerin aynı kişiye ait olduğunu gösterir. Bu adım, sistemimizin kimlik doğrulama veya erişim kontrolü gibi işlevlerini yerine getirmesini sağlar.</p>
+
+            <div class="small-picture">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSLeTDkm9ru1OL0mdeFxl707FFjzOnvDs-2A&s">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyJEXMctk0DXusnJYsQTRgCiGURiq7eXgyoQ&s">
+            </div>
+
+            <p>Bu proje, sadece bir güvenlik sistemi geliştirmekten öte, derin öğrenme, bilgisayar vizyonu ve gerçek zamanlı sistemler hakkında kapsamlı bir anlayış sunar. Bir CS öğrencisi olarak, donanım kaynaklarını optimize etme, farklı kütüphaneler arasında köprü kurma ve algoritma performansını değerlendirme gibi pratik beceriler kazanırsınız. Gelecekte bu sistemi, kapı kilitleme sistemlerine entegre edebilir veya katılım takibi gibi farklı senaryolarda kullanabilirsiniz.
+
+            Bu arşiv parçası, bilgisayar vizyonunun temel prensiplerini uygulamalı olarak keşfetmek isteyen herkes için sağlam bir başlangıç noktasıdır.</p>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 techblog • Aşk Ve Sevgiyle Tasarlandı </p>
+        <p>İletişim için - tehcblog@gmail.com </p>         
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        themeIcon.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        let sonKaydirma = 0;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', function() {
+            let suAnkiKaydirma = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (window.innerWidth > 767) {
+                header.classList.remove('gizli');
+            }
+
+            if (window.innerWidth <= 768) {
+                if (suAnkiKaydirma > sonKaydirma && suAnkiKaydirma > 100) {
+                    header.classList.add('gizli');
+                } else {
+                    header.classList.remove('gizli');
+                }
+            }
+            sonKaydirma = suAnkiKaydirma <= 0 ? 0 : suAnkiKaydirma;
+        }, false);
+    </script>
+</body>
+</html>
