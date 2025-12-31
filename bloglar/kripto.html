@@ -146,20 +146,31 @@
 
         .yazar-div{
             display: flex;
-            justify-content: flex-end;
+            flex-wrap: wrap;
             align-items: center;
+            gap: 20px; 
+            padding: 10px;
         }
 
         .yazar {
             display: flex;
             align-items: center; 
-            gap: 12px;           
+            gap: 20px;
             margin-bottom: 20px;
+
+        }
+
+        .yazar-meta{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: var(--text-muted);
         }
 
         .yazaradi {
-            margin: 0;          
+            margin-left: 5px;          
             font-size: 1.1rem;
+            margin-top: 25px;
         }
 
         .yazar a {
@@ -190,15 +201,12 @@
             filter: grayscale(10%) contrast(105%);
         }
 
-        .okunma{
-            margin-left: 30px;
-        }
 
         .fixedphoto {
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 80%;
+            width: 95%;
             aspect-ratio: 16 / 9;
             border-radius: 4px;
             margin-bottom: 2rem;
@@ -237,7 +245,7 @@
             background-color: var(--bg-color);
         }
 
-        @media screen and (max-width: 550px) {
+        @media screen and (max-width: 450px) {
             .newbtn {
                 display: grid;
                 grid-template-columns: 1fr 1fr; 
@@ -246,6 +254,16 @@
             .newbtn button {
                 width: 100%; 
             }
+
+            .yazar-div p{
+                font-size: 15px;
+            }
+
+            .yazar-meta {
+                flex: 1 0 100%;    
+
+            }
+
         }
 
         @media screen and (max-width: 768px) {
@@ -291,11 +309,13 @@
 
             <div class="yazar-div">
                 <div style="flex-grow: 1;" class="yazar">
-                    <a href="yazarlar.html"><img class="imgcircle" src="../imgs/onur-circle.jpg"></a>
-                    <p class="yazaradi"><a href="../html/yazarlar.html"><b>Yazar:</b>Onur Bolat</a></p>
+                    <a href="yazarlar.html"><img class="imgcircle" src="../imgs/yalcin-circle.jpg"></a>
+                    <p class="yazaradi"><a href="../html/yazarlar.html"><b>Yazar:</b>Yalçın Kılıç</a></p>
                 </div>
-                <p class="tarih"><b>🗓️ 31 Aralık 2025</b></p>
-                <p class="okunma"><b>👀 2.415 Görüntülenme</b></p>
+                <div class="yazar-meta">
+                    <p class="tarih"><b>🗓️ 31 Aralık 2025</b></p>
+                    <p class="okunma"><b>👀 2.415 Görüntülenme</b></p>
+                </div>
             </div>
 
             <img class="fixedphoto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3tBXmXz5JPB6YO0Z20vk9lFVwq_B_fCGCBA&s">
