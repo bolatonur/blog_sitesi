@@ -33,6 +33,11 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+::selection {
+    background: var(--accent);
+    color: white;
+}
+
 /* Header kısmı diğer sayfalarla aynı kalsın diye dokunmadım */
 .header {
     padding: 1.5rem 10%;
@@ -203,7 +208,7 @@ p {
 
 
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 450px) {
     .newbtn {
         display: grid;
         /* 2 kolon her biri 1fr */
