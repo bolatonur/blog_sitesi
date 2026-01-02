@@ -1,3 +1,4 @@
+/* ortak sayfa */
 :root {
     --bg-color: #F4EEDF;      
     --text-main: #1D1D1B;
@@ -38,7 +39,7 @@ body {
     color: white;
 }
 
-/* Header kısmı diğer sayfalarla aynı kalsın diye dokunmadım */
+
 .header {
     padding: 1.5rem 10%;
     border-bottom: 2px solid var(--accent);
@@ -92,7 +93,7 @@ body {
     color: var(--accent);
     border-color: var(--accent); 
 }
-/* aynı şekil tema */
+
 #theme-toggle {
     background: var(--accent);
     color: white;
@@ -121,24 +122,59 @@ body {
     background-color: var(--bg-color);
 }
 
-
-h2 {
-    font-family: var(--font-serif);
-    font-size: 3.2rem;
-    line-height: 1.05;
-    color: var(--accent);
-    margin-bottom: 2rem;
-}
-
-p {
+.footer p{
     margin-bottom: 1.8rem;
     font-size: 1.15rem;
     color: var(--text-main);
     opacity: 0.95;
+
 }
 
+
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 1rem 5%;
+        flex-direction: column; 
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .newbtn {
+        display: grid;
+        /* 2 kolon her biri 1fr */
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+    }
+    
+    .newbtn button {
+        width: 100%; 
+    }
+}
+
+
+
+#theme-icon {
+    /* Emojiyi tamamen renksiz yap */
+    filter: grayscale(100%); 
+    
+    /* Tam silüet (simsiyah) istiyorsan bunu ekle: */
+    /* brightness(0); */
+    
+    display: inline-block;
+    transition: filter 0.3s ease;
+}
+
+/* Karanlık modda siyah silüet görünmez olacağı için beyaza çevirelim */
+[data-theme='dark'] #theme-icon {
+    filter: grayscale(100%) brightness(0) invert(1);
+}
+
+/* sayfa özel css */
+
 .blog-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 3rem auto;
     padding: 0 20px;
 }
@@ -198,32 +234,8 @@ p {
 }
 
 
-@media screen and (max-width: 450px) {
-    .newbtn {
-        display: grid;
-        /* 2 kolon her biri 1fr */
-        grid-template-columns: 1fr 1fr; 
-        gap: 10px;
-    }
-    
-    .newbtn button {
-        width: 100%; 
-    }
-}
-
-
-
-
 @media screen and (max-width: 768px) {
     .blog { flex-direction: column; }
     .picturediv { flex: 1; }
-    h2 {
-        font-size: 2.5rem;
-    }
-    .header {
-        padding: 1rem 5%;
-        display: flex;
-        flex-direction: column; 
-        gap: 15px;
-    }
+
 }

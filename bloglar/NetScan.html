@@ -212,6 +212,22 @@
             margin-top: 1rem;
         }
 
+        #theme-icon {
+    /* Emojiyi tamamen renksiz yap */
+    filter: grayscale(100%); 
+    
+    /* Tam silüet (simsiyah) istiyorsan bunu ekle: */
+    /* brightness(0); */
+    
+    display: inline-block;
+    transition: filter 0.3s ease;
+}
+
+/* Karanlık modda siyah silüet görünmez olacağı için beyaza çevirelim */
+[data-theme='dark'] #theme-icon {
+    filter: grayscale(100%) brightness(0) invert(1);
+}
+
         .small-picture img {
             width: 100%;
             margin: 0;
@@ -267,8 +283,8 @@
 <body>
 
     <header class="header">
-        <div class="sitelogo" onclick="location.href='../html/anasayfa.html'">
-            tech<span>blog</span>
+        <div class="sitelogo" onclick="location.href='anasayfa.html'">
+            noktalı<span>virgül</span>;
         </div>
 
         <div class="butonlar">
@@ -330,16 +346,17 @@
         const htmlElement = document.documentElement;
 
         const savedTheme = localStorage.getItem('theme') || 'light';
-        htmlElement.setAttribute('data-theme', savedTheme);
-        themeIcon.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+htmlElement.setAttribute('data-theme', savedTheme);
+themeIcon.innerText = savedTheme === 'dark' ? '🌟' : '🌙';
 
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            themeIcon.innerText = newTheme === 'dark' ? '☀️' : '🌙';
-        });
+themeToggle.addEventListener('click', () => {
+const currentTheme = htmlElement.getAttribute('data-theme');
+const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+htmlElement.setAttribute('data-theme', newTheme);
+localStorage.setItem('theme', newTheme);
+themeIcon.innerText = newTheme === 'dark' ? '🌟' : '🌙';
+});
 
         let sonKaydirma = 0;
         const header = document.querySelector('.header');
