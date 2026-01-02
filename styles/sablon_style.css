@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
 
+/* ortak ayar kısmı */
+
 :root {
     --bg-color: #F4EEDF;      
     --text-main: #1D1D1B;
@@ -110,141 +112,6 @@ body {
     box-shadow: 0 4px 10px rgba(217, 119, 87, 0.3);
 }
 
-.content {
-    display: flex;
-    max-width: 1300px;
-    margin: 4rem auto;
-    gap: 5rem;
-    padding: 0 20px;
-}
-
-.main {
-    flex: 65%;
-}
-
-h1 {
-    font-family: var(--font-serif);
-    font-size: 3.2rem;
-    line-height: 1.05;
-    color: var(--accent);
-    margin-bottom: 2rem;
-}
-
-p {
-    margin-bottom: 1.8rem;
-    font-size: 1.15rem;
-    color: var(--text-main);
-    opacity: 0.95;
-}
-
-/* yeni kod başlangıç */
-
-.yazar-div{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.yazar {
-    display: flex;
-    align-items: center; 
-    gap: 12px;          
-    margin-bottom: 20px;
-}
-
-.yazaradi {
-    margin: 0;           
-    font-size: 1.1rem;
-}
-
-.yazar a {
-    width: fit-content;
-    display: block;     
-    text-decoration: none;
-}
-
-.yazar a, 
-.yazar a:visited, 
-.yazar a:hover, 
-.yazar a:active {
-    color: inherit;        
-    text-decoration: none; 
-    outline: none;         
-}
-
-
-/* yeni kod bitiş */
-
-a {
-    width: 100%;
-    text-decoration: none;
-}
-
-
-
-.imgcircle{
-
-    display: block;
-    max-width: 70px;
-    height: auto;
-    border-radius: 4px;
-    filter: grayscale(10%) contrast(105%);
-
-}
-
-.okunma{
-margin-left: 30px;
-}
-
-/*
-
-.yazaradi{
-    margin-left: 3%;
-    margin-top: 3.5%;
-    font-size:1.2rem;
-}
-
-.tarih{
-    text-align: right;
-    width: 40%;
-    margin-left: 15%;
-    margin-top: 1.5%;
-    font-size:1.2rem;
-}
-
-
-*/
-
-.fixedphoto {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    aspect-ratio: 16 / 9;
-    border-radius: 4px;
-    margin-bottom: 2rem;
-    filter: grayscale(10%) contrast(105%);
-} 
-
-.small-picture {
-    display: grid;
-    grid-template-columns: 1fr 1fr;  
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.small-picture img {
-    width: 100%;
-    margin: 0;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    aspect-ratio: 16 / 9;
-    border-radius: 4px;
-    margin-bottom: 2rem;
-    filter: grayscale(10%) contrast(105%);
-}
 
 .footer {
     padding: 3rem;
@@ -257,6 +124,15 @@ margin-left: 30px;
     letter-spacing: 0.05em;
     background-color: var(--bg-color);
 }
+
+.footer p{
+    margin-bottom: 1.8rem;
+    font-size: 1.15rem;
+    color: var(--text-main);
+    opacity: 0.95;
+
+}
+
 
 
 @media screen and (max-width: 450px) {
@@ -272,23 +148,229 @@ margin-left: 30px;
 }
 
 @media screen and (max-width: 768px) {
-    .content {
-        flex-direction: column;
-        gap: 3rem;
-    }
-    .sidebar {
-        border-left: none;
-        padding-left: 0;
-        border-top: 1px solid var(--border);
-        padding-top: 3rem;
-    }
-    h2 {
-        font-size: 2.5rem;
-    }
+
     .header {
         padding: 1rem 5%;
         display: flex;
         flex-direction: column; 
         gap: 15px;
     }
+
 }
+
+
+
+/* site içerik kısmı */
+
+
+.content {
+    display: flex;
+    max-width: 1300px;
+    margin: 4rem auto;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    gap: 5rem;
+    padding: 0 20px;
+}
+
+.main {
+    flex: 65%;
+}
+
+.baslik {
+    font-family: var(--font-serif);
+    font-size: 3.2rem;
+    line-height: 1.05;
+    color: var(--accent);
+    margin-bottom: 2rem;
+}
+
+.blogyazisi {
+    margin-bottom: 1.8rem;
+    font-size: 1.15rem;
+    color: var(--text-main);
+    opacity: 0.95;
+}
+
+
+/* yazar okunma tarih kısmı ayarları */
+
+.yazar-div{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center !important;
+            gap: 20px; 
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .yazar {
+            display: flex; 
+            align-items: center;
+            gap: 20px;
+
+        }
+
+        .yazar-meta{
+            display: flex;
+            gap: 20px;
+            color: var(--text-muted);
+        }
+
+        .yazaradi {
+            margin-left: 5px;          
+            font-size: 1.1rem;
+        }
+
+        .yazar a {
+            width: fit-content;
+            display: block;     
+            text-decoration: none;
+        }
+
+        .yazar a, 
+        .yazar a:visited, 
+        .yazar a:hover, 
+        .yazar a:active {
+            color: inherit;         
+            text-decoration: none; 
+            outline: none;          
+        }
+
+.imgcircle{
+    display: block;
+    max-width: 70px;
+    height: auto;
+    border-radius: 4px;
+    filter: grayscale(10%) contrast(105%);
+
+}
+
+
+/* sayfa özel css */
+
+@media screen and (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .yazar-div p{
+        font-size: 15px;
+    }
+
+    .yazar-meta {
+        flex: 1 0 100%;    
+
+    }
+
+}
+
+
+
+
+
+/* fotoğraf grid bölümü */ 
+
+.ikilifotogrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  
+    gap: 1rem;
+    margin-top: 0.5rem;
+    line-height: 0;
+}
+
+.ikilifotogrid img {
+    margin: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    filter: grayscale(10%) contrast(105%);
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.teklifotogrid {
+    display: grid;
+    grid-template-columns: 1fr;  
+    margin-top: 0.5rem;
+    line-height: 0;
+}
+
+.teklifotogrid img {
+    margin: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    filter: grayscale(10%) contrast(105%);
+    object-fit: cover;
+    object-position: center;
+}
+
+.uclufotogrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    line-height: 0;
+}
+
+.uclufotogrid img {
+    margin: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    filter: grayscale(10%) contrast(105%);
+    object-fit: cover;
+    object-position: center;
+
+}
+
+@media screen and (max-width: 600px){
+
+    .ikilifotogrid{
+        grid-template-columns: 1fr; 
+    }
+
+}
+
+
+@media screen and (max-width: 768px){
+
+    .uclufotogrid{
+        grid-template-columns: 1fr 1fr; 
+    }
+
+}
+
+@media screen and (max-width: 550px){
+
+    .uclufotogrid{
+        grid-template-columns: 1fr; 
+    }
+
+}
+
+
+
+
+
+
+
+
