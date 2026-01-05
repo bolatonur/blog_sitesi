@@ -160,12 +160,12 @@ body {
     /* brightness(0); */
     
     display: inline-block;
-    transition: filter 0.3s ease;
 }
 
 /* Karanlık modda siyah silüet görünmez olacağı için beyaza çevirelim */
 [data-theme='dark'] #theme-icon {
-    filter: grayscale(100%) brightness(0) invert(1);
+    filter: grayscale(60%) brightness(1.2) sepia(1) hue-rotate(10deg) saturate(10);
+
 }
 
 /* sayfa özel css */
