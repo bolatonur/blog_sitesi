@@ -266,23 +266,24 @@ body {
 
 
 @media screen and (max-width: 768px) {
-    .about { flex-direction: column; text-align: center; }
-    .photo.cift, .text.cift { order: unset; }
-    .about-banner h1 { font-size: 2.5rem; }
-
-    h2 {
+    .text h2 {
         font-size: 2.5rem;
+        text-align: center;
     }
 }
 
 
  @media screen and (max-width: 1050px) {
 
-    .about { flex-direction: column; text-align: center; }
+    .about { flex-direction: column;}
 
     .photo.cift, .text.cift { order: unset; }
 
     .about-banner h1 { font-size: 2.5rem; }
+
+    .text h2 {
+        text-align: center;
+    }
 
 } 
 
