@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloglar</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bloglar_style.css') }}">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="sitelogo"  onclick="location.href='/'">
+            noktalı<span>virgül</span>;
+        </div>
+
+        <div class="butonlar">
+
+            <div class="newbtn">
+                <a href="/"><button>Anasayfa</button></a>
+                <button style="color: var(--accent); font-weight: 600;">Bloglar</button>
+                <a href="/hakkimizda"><button>Hakkımızda</button></a>
+            </div>
+            
+            <button id="theme-toggle">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="blog-container">
+        {% for yazi in yazilar %}
+
+            <div class="blog">
+                <div class="picturediv">
+                    <a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">
+                        <img class="picture" src="{{ yazi.kapak }}">
+                    </a>
+                </div>        
+                <div class="demoicerik">
+                    <a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">
+                        <h1 class="baslik">{{ yazi.baslik }}</h1>
+                    </a>
+                    <p class="yazi">{{ yazi.ozet }}</p>
+                </div>
+            </div>
+
+        {% endfor %}
+
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 noktalivirgul </p>
+        <p>İletişim için - contact@noktalivirgul.com </p> 
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/bloglar_script.js') }}">
+ 
+    </script>
+
+</body>
+</html>

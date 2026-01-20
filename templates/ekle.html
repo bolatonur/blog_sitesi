@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yeni Yazı Ekle</title>
+    <style>
+        /* Mevcut CSS Aynen Korunuyor */
+        .form-container { width: 60%; margin: 50px auto; display: flex; flex-direction: column; gap: 15px; font-family: sans-serif; }
+        .block { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; position: relative; background: #f9f9f9; border-radius: 8px; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; }
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+        .btn { padding: 10px 15px; cursor: pointer; border: none; border-radius: 4px; color: white; }
+        .btn-text { background: #3498db; }
+        .btn-photo { background: #9b59b6; }
+        .btn-submit { background: #2ecc71; width: 100%; font-size: 18px; }
+        .remove-btn { position: absolute; top: 5px; right: 5px; background: #e74c3c; color: white; border: none; cursor: pointer; border-radius: 50%; width: 25px; height: 25px; }
+        /* Yeni eklenen etiket stili */
+        label { font-weight: bold; margin-top: 10px; display: block; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Yeni Blog Yazısı (Blok Sistemli)</h2>
+        <form method="POST" id="blog-form">
+            
+            <label>Başlık:</label>
+            <input type="text" name="baslik" placeholder="Yazı Başlığı" required>
+
+            <label>Kapak Fotoğrafı:</label>
+            <input type="text" name="kapak" placeholder="Örn: /static/img/kapak.jpg (Opsiyonel)">
+            <label>Özet:</label>
+            <textarea name="ozet" placeholder="Kısa Özet (Anasayfada görünür)" rows="2"></textarea>
+            <label>Yazar:</label>
+            <input type="text" name="yazar" placeholder="onur ya da yalcin şeklinde girin boş bırakılırsa iki yazar da katılır">
+            
+            <hr style="width:100%; margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+            <div id="blocks-container"></div>
+
+            <div class="controls">
+                <button type="button" class="btn btn-text" onclick="addBlock('yazi')">+ Metin Bloğu Ekle</button>
+                <button type="button" class="btn btn-photo" onclick="addBlock('foto')">+ Fotoğraf Bloğu Ekle</button>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Yazıyı Yayınla</button>
+        </form>
+    </div>
+
+    <script>
+        let blockCount = 0;
+
+        function addBlock(type) {
+            const container = document.getElementById('blocks-container');
+            const div = document.createElement('div');
+            div.className = 'block';
+            
+            // Tip bilgisini saklamak için gizli input
+            let contentHtml = `<input type="hidden" name="block_type" value="${type}">`;
+            contentHtml += `<button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button>`;
+
+            if (type === 'yazi') {
+                contentHtml += `<label>Metin İçeriği:</label><textarea name="block_content" rows="5" placeholder="Yazınızı buraya yazın..."></textarea>`;
+            } else {
+                contentHtml += `<label>Fotoğraflar (Virgülle ayırın):</label><input type="text" name="block_content" placeholder="foto1.jpg, foto2.jpg">`;
+            }
+
+            div.innerHTML = contentHtml;
+            container.appendChild(div);
+            blockCount++;
+        }
+
+        // Sayfa açıldığında otomatik bir metin bloğu ekle
+        window.onload = () => addBlock('yazi');
+    </script>
+</body>
+</html>

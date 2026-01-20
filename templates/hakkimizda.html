@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hakkımızda</title>
     
-    <link rel="stylesheet" type="text/css" href="../styles/hakkimizda_style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hakkimizda_style.css') }}">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header class="header"> 
-        <div class="sitelogo" onclick="location.href='anasayfa.html'">
+        <div class="sitelogo"  onclick="location.href='/'">
             noktalı<span>virgül</span>;
         </div>
 
         <div class="butonlar">
 
             <div class="newbtn">
-                <a href="anasayfa.html"><button>Anasayfa</button></a>
-                <a href="bloglar.html"><button>Bloglar</button></a>
+                <a href="/"><button>Anasayfa</button></a>
+                <a href="/bloglar"><button>Bloglar</button></a>
                 <button style="color: var(--accent); font-weight: 600;">Hakkımızda</button>
             </div>
             
@@ -37,7 +37,7 @@
     <div class="main">
         <div class="about tek">
             <div class="photo tek">
-                <img src="../imgs/yalcin.jpeg" >
+                <img src="{{ url_for('static', filename='imgs/yalcin.jpeg') }}" >
             </div>
             <div class="text tek">
                 <h2>Yalçın Kılıç</h2>
@@ -49,7 +49,7 @@
 
         <div class="about cift">
             <div class="photo cift">
-                <img src="../imgs/onur.jpeg">
+                <img src="{{ url_for('static', filename='imgs/onur.jpeg') }}">
             </div>
             <div class="text cift">
                 <h2>Onur Bolat</h2>
@@ -65,7 +65,7 @@
         <p>İletişim için - contact@noktalivirgul.com </p> 
     </footer>
 
-    <script src="../scripts/hakkimizda_script.js">
+    <script src="{{ url_for('static', filename='js/hakkimizda_script.js') }}">
 
     </script>
 

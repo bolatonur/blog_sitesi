@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sablon_style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="sitelogo" onclick="location.href='/'">
+            noktalı<span>virgül</span>;
+        </div>
+
+        <div class="butonlar">
+            
+            <div class="newbtn">
+                <button onclick="location.href='/'">Anasayfa</button>
+                <button onclick="location.href='/bloglar'">Bloglar</button>
+                <button onclick="location.href='/hakkimizda'">Hakkımızda</button>
+            </div>
+
+            <button id="theme-toggle">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="content">
+        <main class="main">
+
+                    <h1 class="baslik">{{ yazi.baslik }}</h1>
+
+                    <div class="yazar-div">
+                        <div style="flex-grow: 1;" class="yazar">
+                            <a href="/yazarlar"><img class="imgcircle" src="{% if yazi.yazar == 'onur' %}{{ url_for('static', filename='imgs/onur-circle.jpg') }}{% elif yazi.yazar == 'yalcin' %}{{ url_for('static', filename='imgs/yalcin-circle.jpg') }}{% endif %}"></a>
+                            <p class="yazaradi"><a href="/yazarlar"><b>Yazar:</b>{%if yazi.yazar =='onur'%}Onur Bolat{%elif yazi.yazar == 'yalcin'%}Yalçın Kılıç{%endif%}</a></p>
+                        </div>
+                        <div class="yazar-meta">
+                            <p class="tarih"><b>{{yazi.tarih|tarih_formati}}</b></p>
+                            <p class="okunma"><b>👀 {{yazi.tiklanma}} Görüntülenme</b></p>
+                        </div>
+                    </div>
+
+                    <div class="teklifotogrid">
+                    <img src="{{ yazi.kapak }}">
+                    </div>
+
+                    
+                    {% for parca in yazi.parcalar %}
+                        
+                        {% if parca.tip == 'yazi' %}
+                            
+                                <p class="blogyazisi">{{ parca.icerik }}</p>
+                            
+
+                        {% elif parca.tip == 'foto' %}
+                            {% set fotolar = parca.icerik.split(',') %}
+                            {% set sayi = fotolar|length %}
+
+                            {# Senin oluşturduğun class'ları buraya yazıyoruz #}
+                            <div class="{% if sayi == 1 %}teklifotogrid{% elif sayi == 2 %}ikilifotogrid{% else %}uclufotogrid{% endif %}">
+                                {% for foto in fotolar %}
+                                    <img src="{{ foto.strip() }}" alt="Görsel">
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                    {% endfor %}
+        </main>
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 noktalivirgul </p>
+        <p>İletişim için - contact@noktalivirgul.com </p>        
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/sablon_script.js') }}"></script>
+</body>
+</html>

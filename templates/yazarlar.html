@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazarlarımız</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/yazarlar_style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="header"> 
+
+        <div class="sitelogo"  onclick="location.href='/'">
+            noktalı<span>virgül</span>;
+        </div>
+
+        <div class="butonlar">
+
+
+            <div class="newbtn">
+                <a href="/"><button>Anasayfa</button></a>
+                <a href="/bloglar"><button>Bloglar</button></a>
+                <a href="/hakkimizda"><button>Hakkımızda</button></a>
+            </div>
+            
+            <button id="theme-toggle">
+                <span id="theme-icon">🌙</span>
+            </button>
+
+
+        </div>
+    </div>
+
+
+    <div class="author-line">
+        <img class="imgcircle active-author" src="{{ url_for('static', filename='imgs/yalcin-circle.jpg') }}" onclick="switchAuthor('yalcin', this)">
+        <img class="imgcircle" src="{{ url_for('static', filename='imgs/onur-circle.jpg') }}" onclick="switchAuthor('onur', this)">
+    </div>
+
+    <div class="author-name-line">
+        <p>Yalçın Kılıç</p>
+        <p>Onur Bolat</p>
+    </div>
+
+    <div class="bordery"></div>
+
+    <div class="mother">
+
+        <div id="yalcin-posts" class="author-posts" style="display: block;">
+
+            <div class="content-line">
+
+                {% for yazi in yazilar%}
+
+                    {%if yazi.yazar == 'yalcin'%}
+                    <div class="author-content">
+
+                        <a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">  
+                            <img src="{{yazi.kapak}}">
+                        </a>                        
+
+                        <p class="kucuk-baslık"><a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">{{yazi.baslik}}</a></p>
+                        
+                    </div>
+                    {%endif%}
+                {%endfor%}
+            
+     </div>
+ </div>
+
+        <div id="onur-posts" class="author-posts" style="display: none;">
+
+            <div class="content-line">
+
+                {% for yazi in yazilar%}
+                {%if yazi.yazar == 'onur'%}
+                <div class="author-content">
+
+                    <a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">  
+                        <img src="{{yazi.kapak}}">
+                    </a>                        
+
+                    <p class="kucuk-baslık"><a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">{{yazi.baslik}}</a></p>
+                    
+                </div>
+                {%endif%}
+                {%endfor%}
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+    
+
+    <div class="footer">
+        <p>© 2025 noktalivirgul </p>
+        <p>İletişim için - contact@noktalivirgul.com </p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/yazarlar_script.js') }}"></script>
+
+</body>
+</html>
