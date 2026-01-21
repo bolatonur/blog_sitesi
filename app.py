@@ -2,7 +2,8 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime 
 import re
-
+import os
+from flask import send_from_directory 
 
 """
 yazı tıklama cookies halledilecek
@@ -10,6 +11,13 @@ yazı tıklama cookies halledilecek
 """
 
 app = Flask(__name__)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+
 
 
 
