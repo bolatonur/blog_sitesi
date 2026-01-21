@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, make_response
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime 
 import re
@@ -124,15 +124,29 @@ def sablon():
     return render_template('sablon.html')
 """
 
+# son teknoloji mucizesi cookie mantığı basit aslında da çaktırma
+
 @app.route('/blog/<string:post_slug>')
 def blog_detay(post_slug):
 
     yazi = Post.query.filter_by(slug=post_slug).first_or_404()
     
-    yazi.tiklanma += 1
-    db.session.commit()
+    # 1. Bu yazıya özel çerez ismini oluştur (Örn: okundu_merhaba-dunya)
+    cerez_adi = f"okundu_{yazi.slug}"
+    daha_once_okudu_mu = request.cookies.get(cerez_adi)
+
+    # 2. Şablonu hazırlıyoruz ama hemen göndermiyoruz (çerez eklemek için bekletiyoruz)
+    response = make_response(render_template('sablon.html', yazi=yazi))
+
+    # 3. Eğer çerez yoksa tıklanmayı artır ve çerez ekle
+    if not daha_once_okudu_mu:
+        yazi.tiklanma += 1
+        db.session.commit()
+        
+        # Kullanıcının tarayıcısına 10 günlük çerez
+        response.set_cookie(cerez_adi, '1', max_age=60*60*24*10)
     
-    return render_template('sablon.html', yazi=yazi)
+    return response
 
 
 # --- YAZI EKLEME SEKMESİ ---
