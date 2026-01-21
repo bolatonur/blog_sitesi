@@ -99,7 +99,7 @@ body {
     background: var(--accent);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -109,6 +109,14 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 10px rgba(217, 119, 87, 0.3);
+}
+
+#theme-icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    filter: brightness(1.1);
 }
 
 
@@ -148,23 +156,6 @@ body {
         flex-direction: column; 
         gap: 15px; 
     }
-}
-
-
-#theme-icon {
-    /* Emojiyi tamamen renksiz yap */
-    filter: grayscale(100%); 
-    
-    /* Tam silüet (simsiyah) istiyorsan bunu ekle: */
-    /* brightness(0); */
-    
-    display: inline-block;
-}
-
-/* Karanlık modda siyah silüet görünmez olacağı için beyaza çevirelim */
-[data-theme='dark'] #theme-icon {
-    filter: grayscale(60%) brightness(1.2) sepia(1) hue-rotate(10deg) saturate(10);
-
 }
 
 /* sayfa özel css */

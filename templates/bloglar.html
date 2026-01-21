@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bloglar_style.css') }}">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <script>
+        const SUN_ICON = "{{ url_for('static', filename='imgs/sun.svg') }}";
+        const MOON_ICON = "{{ url_for('static', filename='imgs/moon.svg') }}";
+    </script>
+
 </head>
 <body>
 
@@ -25,7 +31,7 @@
             </div>
             
             <button id="theme-toggle">
-                <span id="theme-icon">🌙</span>
+                <img id="theme-icon" src="" alt="Tema İkonu" width="24" height="24">
             </button>
         </div>
     </header>
