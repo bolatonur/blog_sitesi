@@ -5,10 +5,6 @@ import re
 import os
 from flask import send_from_directory 
 
-"""
-yazı tıklama cookies halledilecek
-
-"""
 
 app = Flask(__name__)
 
