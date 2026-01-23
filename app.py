@@ -1,12 +1,15 @@
-from flask import Flask, render_template, redirect, url_for, request, make_response
+from flask import Flask, render_template, redirect, url_for, request, make_response, send_from_directory 
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime 
 import re
 import os
-from flask import send_from_directory 
+from dotenv import load_dotenv
 
+load_dotenv()
+ADMIN_SIFRE = os.getenv('ADMIN_SIFRE')
 
 app = Flask(__name__)
+
 
 @app.route('/favicon.ico')
 def favicon():
@@ -145,36 +148,47 @@ def blog_detay(post_slug):
     return response
 
 
-# --- YAZI EKLEME SEKMESİ ---
+#--- YAZI EKLEME SEKMESİ ---
 @app.route('/ekle', methods=['GET', 'POST'])
 def yazi_ekle():
     if request.method == 'POST':
-        yeni_baslik = request.form.get('baslik')
-        yeni_ozet = request.form.get('ozet')
-        yeni_slug = slugify(yeni_baslik)
-        yeni_kapak = request.form.get('kapak')
-        yeni_yazar = request.form.get('yazar')
-
-        yeni_post = Post(baslik=yeni_baslik, ozet=yeni_ozet, slug=yeni_slug, kapak=yeni_kapak, yazar=yeni_yazar)
-        db.session.add(yeni_post)
-        db.session.flush()
+        girilen_sifre = request.form.get('admin_sifre')
         
-        tipler = request.form.getlist('block_type')
-        icerikler = request.form.getlist('block_content')
 
-        for i in range(len(tipler)):
-            yeni_parca = PostContent(
-                post_id=yeni_post.id,
-                tip=tipler[i],
-                icerik=icerikler[i],
-                sira=i + 1
-            )
-            db.session.add(yeni_parca)
+        if girilen_sifre != ADMIN_SIFRE:
+            return "Hatalı Şifre!", 403
 
-        db.session.commit()
-        return redirect(url_for('home'))
-    
-    return render_template('ekle.html')
+        if 'baslik' in request.form:
+            yeni_baslik = request.form.get('baslik')
+            yeni_ozet = request.form.get('ozet')
+            yeni_slug = slugify(yeni_baslik)
+            yeni_kapak = request.form.get('kapak')
+            yeni_yazar = request.form.get('yazar')
+
+            yeni_post = Post(baslik=yeni_baslik, ozet=yeni_ozet, slug=yeni_slug, kapak=yeni_kapak, yazar=yeni_yazar)
+            db.session.add(yeni_post)
+            db.session.flush()
+            
+            tipler = request.form.getlist('block_type')
+            icerikler = request.form.getlist('block_content')
+
+            for i in range(len(tipler)):
+                yeni_parca = PostContent(post_id=yeni_post.id, tip=tipler[i], icerik=icerikler[i], sira=i + 1)
+                db.session.add(yeni_parca)
+
+            db.session.commit()
+            return redirect(url_for('home'))
+
+        return render_template('ekle.html', admin_sifre=girilen_sifre)
+
+    return '''
+        <form method="post" style="text-align:center; margin-top:100px; font-family:sans-serif;">
+            <h2>Yazı Ekleme Paneli</h2>
+            <input type="password" name="admin_sifre" placeholder="Şifreyi gir" required 
+                   style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+            <button type="submit" style="padding:10px 20px; cursor:pointer;">İlerle</button>
+        </form>
+    '''
 
 
 
