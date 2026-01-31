@@ -20,26 +20,24 @@ themeToggle.addEventListener('click', () => {
     themeIcon.src = newTheme === 'dark' ? sunIconPath : moonIconPath;
 });
 
-
 let sonKaydirma = 0;
 const header = document.querySelector('.header');
-const tolerans = 180;
 
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', function() {
     let suAnkiKaydirma = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (Math.abs(suAnkiKaydirma - sonKaydirma) <= 5) return;
 
-    if (window.innerWidth <= 768) {
-        if (suAnkiKaydirma > sonKaydirma && suAnkiKaydirma > tolerans) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
+    if (window.innerWidth <= 1300) {
+        if (suAnkiKaydirma > sonKaydirma && suAnkiKaydirma > 150) {
+            header.classList.add('gizli');
+        } 
+        // Sayfa en tepeye (0'a) çok yakınsa veya yukarı kaydırıyorsa her zaman göster
+        else if (suAnkiKaydirma < sonKaydirma || suAnkiKaydirma <= 50) {
+            header.classList.remove('gizli');
         }
     } else {
-        header.style.transform = 'translateY(0)';
+        header.classList.remove('gizli');
     }
 
     sonKaydirma = suAnkiKaydirma <= 0 ? 0 : suAnkiKaydirma;
-}, { passive: true }); 
+}, false);
 

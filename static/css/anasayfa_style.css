@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
 
+
+/* ortak sayfa */
+
 :root {
     --bg-color: #F4EEDF;      
     --text-main: #1D1D1B;
@@ -7,6 +10,7 @@
     --accent: #D97757;
     --border: #E3DBCC;
     --card-bg: #FCFBF8;
+    
     --font-serif: 'Instrument Serif', serif;
     --font-sans: 'Inter', sans-serif;
 }
@@ -31,7 +35,9 @@ body {
     font-family: var(--font-sans);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+      background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      color 0.3s ease;
 }
 
 ::selection {
@@ -46,11 +52,10 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: var(--bg-color);
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
-    will-change: transform;
 }
 
 .header.gizli {
@@ -86,7 +91,6 @@ body {
     font-weight: 500;
     cursor: pointer;
     color: var(--text-main);
-    transition: all 0.2s ease;
 }
 
 .butonlar button:hover {
@@ -118,22 +122,83 @@ body {
     filter: brightness(1.1);
 }
 
+
 .footer {
+    padding-bottom: 0.75rem;
     padding: 2rem;
     border-top: 1px solid var(--border);
-    background-color: var(--bg-color);
+    background-color: var(--card-bg);
     color: var(--text-muted);
     text-align: center;
-    font-size: 0.9rem;
     letter-spacing: 0.05em;
+    background-color: var(--bg-color);
 }
 
-.footer p {
-    margin-bottom: 1.8rem;
-    font-size: 1.15rem;
+.footer p{
+    margin-bottom: 1rem;
     color: var(--text-main);
+    font-size: 0.9rem;
     opacity: 0.95;
+
 }
+
+
+@media screen and (max-width: 768px) {
+
+
+    .sitelogo {
+        font-size: 1.9rem;
+    }
+
+    .footer {
+        padding: 1.5rem;
+    }
+    .footer p {
+        margin-bottom: 0.5rem;
+    }
+        
+
+}
+
+
+@media screen and (max-width: 650px){
+
+       .butonlar {
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+    
+    .butonlar button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .header { 
+        padding: 1rem 5%; 
+        display: flex;
+        flex-direction: column; 
+        gap: 12px; 
+    }
+   
+
+
+
+}
+
+@media screen and (max-width: 450px) {
+        .newbtn {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .newbtn button { width: 100%; }
+}
+
+    
+
+
+/* sayfa özel css */
 
 .content {
     display: flex;
@@ -155,7 +220,7 @@ body {
 
 .content h2 {
     font-family: var(--font-serif);
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-size: 3rem;
     line-height: 1.05;
     color: var(--accent);
     margin-bottom: 2rem;
@@ -185,7 +250,6 @@ body {
     height: auto;
     border-radius: 4px;
     margin-bottom: 1rem;
-    filter: grayscale(10%) contrast(105%); 
 }
 
 .lastcontents {
@@ -219,28 +283,8 @@ body {
     }
 }
 
-@media screen and (max-width: 768px) {
-    .header { 
-        padding: 1rem 5%; 
-        flex-direction: column; 
-        gap: 12px; 
-    }
-    
-    .sitelogo {
-        font-size: 1.8rem;
-    }
-    
-    .butonlar {
-        gap: 8px;
-        flex-wrap: nowrap;
-    }
-    
-    .butonlar button {
-        padding: 6px 12px;
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
-    
+@media screen and (max-width: 768px) {    
+ 
     .content {
         flex-direction: column;
         gap: 2rem;
@@ -252,22 +296,15 @@ body {
         border-top: 1px solid var(--border);
         padding-top: 2.5rem;
     }
-    .footer {
-        padding: 1.5rem;
-    }
-    .footer p {
-        margin-bottom: 0.5rem;
-    }
+
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 650px) {
     .lastcontents {
         grid-template-columns: 1fr;
     }
-    .newbtn {
-        display: grid;
-        grid-template-columns: 1fr 1fr; 
-        gap: 10px;
+
+    .icerikaciklama{
+        font-size: 1rem;
     }
-    .newbtn button { width: 100%; }
 }

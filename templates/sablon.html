@@ -44,9 +44,22 @@
 
                     <div class="yazar-div">
                         <div style="flex-grow: 1;" class="yazar">
-                            <a href="/yazarlar"><img class="imgcircle" src="{% if yazi.yazar == 'onur' %}{{ url_for('static', filename='imgs/onur-circle.jpg') }}{% elif yazi.yazar == 'yalcin' %}{{ url_for('static', filename='imgs/yalcin-circle.jpg') }}{% endif %}"></a>
-                            <p class="yazaradi"><a href="/yazarlar"><b>Yazar:</b>{%if yazi.yazar =='onur'%}Onur Bolat{%elif yazi.yazar == 'yalcin'%}Yalçın Kılıç{%endif%}</a></p>
+                            {% if yazi.yazar %}
+                                <a href="/yazarlar">
+                                    <img class="imgcircle" src="{% if yazi.yazar == 'onur' %}{{ url_for('static', filename='imgs/onur-circle.jpg') }}{% else %}{{ url_for('static', filename='imgs/yalcin-circle.jpg') }}{% endif %}">
+                                </a>
+                                <p class="yazaradi"><a href="/yazarlar"><b>Yazar:</b> {% if yazi.yazar == 'onur' %}Onur Bolat{% else %}Yalçın Kılıç{% endif %}</a></p>
+                            {% else %}
+                                <a href="/yazarlar" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                                    <div class="avatar-stack">
+                                        <img class="stack-img bottom" src="{{ url_for('static', filename='imgs/yalcin-circle.jpg') }}">
+                                        <img class="stack-img top" src="{{ url_for('static', filename='imgs/onur-circle.jpg') }}">
+                                    </div>
+                                    <p class="yazaradi" style="margin-bottom: 0;"><b>Yazarlar:</b> Onur & Yalçın</p>
+                                </a>
+                            {% endif %}
                         </div>
+                        
                         <div class="yazar-meta">
                             <p class="tarih"><b>{{yazi.tarih|tarih_formati}}</b></p>
                             <p class="okunma"><b>👀 {{yazi.tiklanma}} Görüntülenme</b></p>

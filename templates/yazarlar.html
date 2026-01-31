@@ -61,6 +61,19 @@
 
                 {% for yazi in yazilar%}
 
+                    {% if yazi.yazar%}
+                    {%else%}
+                    <div class="author-content">
+
+                        <a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">  
+                            <img src="{{yazi.kapak}}">
+                        </a>                        
+
+                        <p class="kucuk-baslık"><a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">{{yazi.baslik}}</a></p>
+                        
+                    </div>
+                    {%endif%}
+
                     {%if yazi.yazar == 'yalcin'%}
                     <div class="author-content">
 
@@ -82,6 +95,7 @@
             <div class="content-line">
 
                 {% for yazi in yazilar%}
+
                 {%if yazi.yazar == 'onur'%}
                 <div class="author-content">
 
@@ -93,6 +107,23 @@
                     
                 </div>
                 {%endif%}
+
+                {%if yazi.yazar%}
+
+                {%else%}
+
+                <div class="author-content">
+
+                        <a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">  
+                            <img src="{{yazi.kapak}}">
+                        </a>                        
+
+                        <p class="kucuk-baslık"><a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">{{yazi.baslik}}</a></p>
+                        
+                    </div>
+                {%endif%}
+
+
                 {%endfor%}
                 
             </div>
