@@ -223,8 +223,24 @@ body {
     .header { 
         padding: 1rem 5%; 
         flex-direction: column; 
-        gap: 15px; 
+        gap: 12px; 
     }
+    
+    .sitelogo {
+        font-size: 1.8rem;
+    }
+    
+    .butonlar {
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+    
+    .butonlar button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+    
     .content {
         flex-direction: column;
         gap: 2rem;
