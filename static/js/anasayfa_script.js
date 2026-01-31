@@ -23,26 +23,23 @@ themeToggle.addEventListener('click', () => {
 
 let sonKaydirma = 0;
 const header = document.querySelector('.header');
+const tolerans = 180;
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', () => {
     let suAnkiKaydirma = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (Math.abs(suAnkiKaydirma - sonKaydirma) <= 5) return;
 
-
-    if (window.innerWidth > 767) {
-        header.classList.remove('gizli');
-        }
-
-    // Sadece mobil cihazlarda çalışmasını istiyorsan (örn: 768px altı)
     if (window.innerWidth <= 768) {
-        if (suAnkiKaydirma > sonKaydirma && suAnkiKaydirma > 100) {
-            // Aşağı kaydırırken gizle
-            header.classList.add('gizli');
+        if (suAnkiKaydirma > sonKaydirma && suAnkiKaydirma > tolerans) {
+            header.style.transform = 'translateY(-100%)';
         } else {
-            // Yukarı kaydırırken veya en tepedeyken geri getir
-            header.classList.remove('gizli');
+            header.style.transform = 'translateY(0)';
         }
+    } else {
+        header.style.transform = 'translateY(0)';
     }
-            
+
     sonKaydirma = suAnkiKaydirma <= 0 ? 0 : suAnkiKaydirma;
-}, false);
+}, { passive: true }); 
 
