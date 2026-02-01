@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yazı Düzenle</title>
+    <style>
+        .form-container { width: 60%; margin: 50px auto; display: flex; flex-direction: column; gap: 15px; font-family: sans-serif; }
+        .block { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; position: relative; background: #f9f9f9; border-radius: 8px; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; }
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+        .btn { padding: 10px 15px; cursor: pointer; border: none; border-radius: 4px; color: white; }
+        .btn-text { background: #3498db; }
+        .btn-photo { background: #9b59b6; }
+        .btn-submit { background: #2ecc71; width: 100%; font-size: 18px; }
+        .btn-delete { background: #e74c3c; margin-top: 10px; width: 100%; }
+        .remove-btn { position: absolute; top: 5px; right: 5px; background: #e74c3c; color: white; border: none; cursor: pointer; border-radius: 50%; width: 25px; height: 25px; }
+        label { font-weight: bold; margin-top: 10px; display: block; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Yazıyı Düzenle: {{ yazi.baslik }}</h2>
+        <form method="POST">
+            <input type="hidden" name="admin_sifre" value="{{ admin_sifre }}">
+            <input type="hidden" name="post_id" value="{{ yazi.id }}">
+            <input type="hidden" name="islem_tipi" id="islem_tipi" value="guncelle">
+
+            <label>Başlık:</label>
+            <input type="text" name="baslik" value="{{ yazi.baslik }}" required>
+
+            <label>Kapak Fotoğrafı:</label>
+            <input type="text" name="kapak" value="{{ yazi.kapak }}">
+            
+            <label>Özet:</label>
+            <textarea name="ozet" rows="2">{{ yazi.ozet }}</textarea>
+            
+            <label>Yazar:</label>
+            <input type="text" name="yazar" value="{{ yazi.yazar }}">
+            
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+            <div id="blocks-container">
+                {% for parca in bloklar %}
+                <div class="block">
+                    <input type="hidden" name="block_type" value="{{ parca.tip }}">
+                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button>
+                    {% if parca.tip == 'yazi' %}
+                        <label>Metin İçeriği:</label>
+                        <textarea name="block_content" rows="5">{{ parca.icerik }}</textarea>
+                    {% else %}
+                        <label>Fotoğraflar (Virgülle ayırın):</label>
+                        <input type="text" name="block_content" value="{{ parca.icerik }}">
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="controls">
+                <button type="button" class="btn btn-text" onclick="addBlock('yazi')">+ Metin Bloğu Ekle</button>
+                <button type="button" class="btn btn-photo" onclick="addBlock('foto')">+ Fotoğraf Bloğu Ekle</button>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Değişiklikleri Kaydet</button>
+            <button type="submit" class="btn btn-delete" onclick="return confirmSilme()">Yazıyı Tamamen Sil</button>
+        </form>
+    </div>
+
+    <script>
+        function confirmSilme() {
+            if(confirm("DİKKAT! Bu yazıyı tamamen silmek istediğine emin misin?")) {
+                document.getElementById('islem_tipi').value = 'sil';
+                return true;
+            }
+            return false;
+        }
+
+        function addBlock(type) {
+            const container = document.getElementById('blocks-container');
+            const div = document.createElement('div');
+            div.className = 'block';
+            let contentHtml = `<input type="hidden" name="block_type" value="${type}">`;
+            contentHtml += `<button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button>`;
+            if (type === 'yazi') {
+                contentHtml += `<label>Metin İçeriği:</label><textarea name="block_content" rows="5"></textarea>`;
+            } else {
+                contentHtml += `<label>Fotoğraflar:</label><input type="text" name="block_content">`;
+            }
+            div.innerHTML = contentHtml;
+            container.appendChild(div);
+        }
+    </script>
+</body>
+</html>

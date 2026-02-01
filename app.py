@@ -192,6 +192,54 @@ def yazi_ekle():
 
 
 
+#--- YAZI DÜZENLEME/SİLME SEKMESİ ---
+@app.route('/duzenle', methods=['GET', 'POST'])
+def duzenle():
+    all_posts = Post.query.all()
+
+    if request.method == 'POST':
+        girilen_sifre = request.form.get('admin_sifre')
+        if girilen_sifre != ADMIN_SIFRE:
+            return "Hatalı Şifre!", 403
+
+        secilen_yazi_id = request.form.get('post_id')
+        yazi = Post.query.get(int(secilen_yazi_id))
+
+        if not yazi:
+            return "Yazı bulunamadı!", 404
+
+        # SİLME İŞLEMİ
+        if request.form.get('islem_tipi') == 'sil':
+            PostContent.query.filter_by(post_id=yazi.id).delete()
+            db.session.delete(yazi)
+            db.session.commit()
+            return redirect(url_for('home'))
+
+        # GÜNCELLEME (ÜZERİNE YAZMA) İŞLEMİ
+        if 'baslik' in request.form:
+            yazi.baslik = request.form.get('baslik')
+            yazi.ozet = request.form.get('ozet')
+            yazi.kapak = request.form.get('kapak')
+            yazi.yazar = request.form.get('yazar')
+            yazi.slug = slugify(yazi.baslik)
+
+            PostContent.query.filter_by(post_id=yazi.id).delete()
+                        
+            tipler = request.form.getlist('block_type')
+            icerikler = request.form.getlist('block_content')
+            for i in range(len(tipler)):
+                yeni_parca = PostContent(post_id=yazi.id, tip=tipler[i], icerik=icerikler[i], sira=i + 1)
+                db.session.add(yeni_parca)
+
+            db.session.commit()
+            return redirect(url_for('home'))
+
+       
+        bloklar = PostContent.query.filter_by(post_id=yazi.id).order_by(PostContent.sira).all()
+        return render_template('duzenle.html', yazi=yazi, bloklar=bloklar, admin_sifre=girilen_sifre)
+
+    return render_template('duzenle_secim.html', all_posts=all_posts)
+
 # --- ÇALIŞTIRMA ---
 if __name__ == '__main__':
     app.run(debug=True)

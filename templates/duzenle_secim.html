@@ -1,0 +1,15 @@
+<div style="text-align:center; margin-top:100px; font-family:sans-serif;">
+    <h2>Yazı Düzenleme Paneli</h2>
+    <form method="post">
+        <input type="password" name="admin_sifre" placeholder="Admin Şifresi" required style="padding:10px; width:250px;"><br><br>
+        
+        <label>Düzenlenecek Yazıyı Seçin:</label><br>
+        <select name="post_id" required style="padding:10px; width:275px; margin-top:10px;">
+            {% for p in all_posts %}
+                <option value="{{ p.id }}">{{ p.baslik }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <button type="submit" style="padding:10px 20px; cursor:pointer;">Düzenlemeye Başla</button>
+    </form>
+</div>

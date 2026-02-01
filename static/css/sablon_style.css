@@ -419,6 +419,38 @@ a:hover .stack-img.bottom {
 
 }
 
+
+
+@media screen and (max-width: 768px){
+
+    .uclufotogrid{
+        grid-template-columns: 1fr 1fr; 
+    }
+
+    .teklifotogrid img {
+        margin-bottom: 1rem;
+    }
+
+    .ikilifotogrid img {
+        margin-bottom: 1rem;
+    }
+
+    .uclufotogrid img {
+        margin-bottom: 1rem;
+    }
+
+    .baslik {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .blogyazisi{
+        margin-bottom: 1rem;
+    }
+
+}
+
+
 @media screen and (max-width: 600px){
 
     .ikilifotogrid{
@@ -430,19 +462,12 @@ a:hover .stack-img.bottom {
     }
 
     .blogyazisi{
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
 }
 
 
-@media screen and (max-width: 768px){
-
-    .uclufotogrid{
-        grid-template-columns: 1fr 1fr; 
-    }
-
-}
 
 @media screen and (max-width: 550px){
 
