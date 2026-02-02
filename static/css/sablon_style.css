@@ -145,6 +145,7 @@ body {
     align-items: center;
     margin: 2rem 0; 
     width: 100%;
+    
 }
 
 .medya-container iframe {
@@ -267,7 +268,21 @@ code[class*="language-"] {
     .newbtn button { width: 100%; }
 }
 
+@media screen and (min-width: 768px) {
     
+    .medya-container iframe {
+        width: 700px !important; 
+        max-width: 100%;         
+        display: block;
+    }
+
+    .medya-container iframe[src*="youtube"] {
+        width: 1000px !important;    
+        aspect-ratio: 16 / 9;       
+        height: auto !important;    
+    }
+    
+}
 
 
 /* sayfa özel css */
