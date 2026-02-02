@@ -54,18 +54,23 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: var(--bg-color);
+    z-index: 1000;
     position: -webkit-sticky;
     position: sticky;
-    top: 0;
-    z-index: 1000;
+    top: 0; 
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                background-color 0.35s ease-in-out,
+                color 0.35s ease-in-out;
+                
+    will-change: transform;
+}
+
+.header.gizli {
+    transform: translateY(-100%);
 }
 
 a{
     text-decoration: none;
-}
-
-.header.gizli {
-    transform: translateY(-100%); 
 }
 
 .sitelogo {
