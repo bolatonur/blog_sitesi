@@ -10,6 +10,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+
     <script>
         const SUN_ICON = "{{ url_for('static', filename='imgs/sun.svg') }}";
         const MOON_ICON = "{{ url_for('static', filename='imgs/moon.svg') }}";
@@ -72,25 +74,41 @@
 
                     
                     {% for parca in yazi.parcalar %}
-                        
-                        {% if parca.tip == 'yazi' %}
-                            
-                                <p class="blogyazisi">{{ parca.icerik }}</p>
-                            
+    
+    {% if parca.tip == 'yazi' %}
+        <p class="blogyazisi">{{ parca.icerik }}</p>
 
-                        {% elif parca.tip == 'foto' %}
-                            {% set fotolar = parca.icerik.split(',') %}
-                            {% set sayi = fotolar|length %}
+    {% elif parca.tip == 'foto' %}
+        {% set fotolar = parca.icerik.split(',') %}
+        {% set sayi = fotolar|length %}
+        <div class="{% if sayi == 1 %}teklifotogrid{% elif sayi == 2 %}ikilifotogrid{% else %}uclufotogrid{% endif %}">
+            {% for foto in fotolar %}
+                <img src="{{ foto.strip() }}" alt="Görsel">
+            {% endfor %}
+        </div>
 
-                            {# Senin oluşturduğun class'ları buraya yazıyoruz #}
-                            <div class="{% if sayi == 1 %}teklifotogrid{% elif sayi == 2 %}ikilifotogrid{% else %}uclufotogrid{% endif %}">
-                                {% for foto in fotolar %}
-                                    <img src="{{ foto.strip() }}" alt="Görsel">
-                                {% endfor %}
-                            </div>
-                        {% endif %}
+    {% elif parca.tip.startswith('kod-') %}
+        {% set dil = parca.tip.split('-')[1] %}
+        
+        <div class="code-window">
+            <div class="window-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="lang-title">{{ dil|upper }}</span>
+            </div>
+            <pre><code class="language-{{ dil }}">{{ parca.icerik }}</code></pre>
+        </div>
 
-                    {% endfor %}
+
+    {% elif parca.tip == 'medya' %}
+        <div class="medya-container">
+            {{ parca.icerik|safe }}
+        </div>
+
+    {% endif %}
+
+{% endfor %}
         </main>
 
     </div>
@@ -102,4 +120,10 @@
 
     <script src="{{ url_for('static', filename='js/sablon_script.js') }}"></script>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+
 </html>
