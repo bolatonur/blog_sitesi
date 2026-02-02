@@ -26,17 +26,27 @@ yazar foto şablonunu değiştir
 </head>
 <body>
 
-    <header class="header">
+    <header class="header"> 
+       <a href="/"> 
         <div class="sitelogo"  onclick="location.href='/'">
             noktalı<span>virgül</span>;
         </div>
+      </a>
 
         <div class="butonlar">
             
             <div class="newbtn">
-                <button style="color: var(--accent); font-weight: 600;">Anasayfa</button>
-                <button onclick="location.href='/bloglar'">Bloglar</button>
-                <button onclick="location.href='/hakkimizda'">Hakkımızda</button>
+                <a href="/">
+                    <button style="color: var(--accent); font-weight: 600;">Anasayfa</button>
+                </a>    
+                
+                <a href="/bloglar">
+                    <button onclick="location.href='/bloglar'">Bloglar</button>
+                </a>
+                
+                <a href="/hakkimizda"> 
+                    <button onclick="location.href='/hakkimizda'">Hakkımızda</button>
+                </a>
             </div>
 
             <button id="theme-toggle">
