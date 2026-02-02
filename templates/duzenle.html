@@ -46,9 +46,26 @@
                     {% if parca.tip == 'yazi' %}
                         <label>Metin İçeriği:</label>
                         <textarea name="block_content" rows="5">{{ parca.icerik }}</textarea>
-                    {% else %}
+                    {% elif parca.tip == 'foto' %}
                         <label>Fotoğraflar (Virgülle ayırın):</label>
                         <input type="text" name="block_content" value="{{ parca.icerik }}">
+                    {% elif parca.tip == 'medya' %}
+                        <label>Embed Kodu (YouTube, Instagram, X vb.):</label>
+                        <textarea name="block_content" rows="4">{{ parca.icerik }}</textarea>
+                        <p style="font-size:12px; color:#666;">Not: Paylaş > Yerleştir (Embed) seçeneğindeki kodu buraya yapıştırın.</p>                
+                    {% else %}
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <label>Kod Bloğu:</label>
+                            <select onchange="this.parentElement.nextElementSibling.value = 'kod-' + this.value" style="width:150px; padding:5px;">
+                                <option value="python" {% if parca.tip == 'kod-python' %}selected{% endif %}>Python</option>
+                                <option value="c" {% if parca.tip == 'kod-c' %}selected{% endif %}>C / C++</option>
+                                <option value="html" {% if parca.tip == 'kod-html' %}selected{% endif %}>HTML/XML</option>
+                                <option value="css" {% if parca.tip == 'kod-css' %}selected{% endif %}>CSS</option>
+                                <option value="javascript" {% if parca.tip == 'kod-javascript' %}selected{% endif %}>JavaScript</option>
+                                <option value="bash" {% if parca.tip == 'kod-bash' %}selected{% endif %}>Terminal/Bash</option>
+                            </select>
+                        </div>
+                        <textarea name="block_content" rows="10" style="background:#2d2d2d; color:#f8f8f2; font-family:monospace; margin-top:10px;">{{ parca.icerik }}</textarea>
                     {% endif %}
                 </div>
                 {% endfor %}
@@ -57,6 +74,8 @@
             <div class="controls">
                 <button type="button" class="btn btn-text" onclick="addBlock('yazi')">+ Metin Bloğu Ekle</button>
                 <button type="button" class="btn btn-photo" onclick="addBlock('foto')">+ Fotoğraf Bloğu Ekle</button>
+                <button type="button" class="btn" style="background:#34495e;" onclick="addBlock('kod')">+ Kod Bloğu</button>
+                <button type="button" class="btn" style="background:#e056fd;" onclick="addBlock('medya')">+ Medya / Embed</button>
             </div>
 
             <button type="submit" class="btn btn-submit">Değişiklikleri Kaydet</button>
@@ -77,15 +96,54 @@
             const container = document.getElementById('blocks-container');
             const div = document.createElement('div');
             div.className = 'block';
-            let contentHtml = `<input type="hidden" name="block_type" value="${type}">`;
-            contentHtml += `<button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button>`;
+            
+            let contentHtml = `<button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button>`;
+
             if (type === 'yazi') {
-                contentHtml += `<label>Metin İçeriği:</label><textarea name="block_content" rows="5"></textarea>`;
-            } else {
-                contentHtml += `<label>Fotoğraflar:</label><input type="text" name="block_content">`;
+                contentHtml += `
+                    <input type="hidden" name="block_type" value="yazi">
+                    <label>Metin İçeriği:</label>
+                    <textarea name="block_content" rows="5" placeholder="Yazınızı buraya yazın..."></textarea>
+                `;
+            } 
+            else if (type === 'foto') {
+                contentHtml += `
+                    <input type="hidden" name="block_type" value="foto">
+                    <label>Fotoğraflar (Virgülle ayırın):</label>
+                    <input type="text" name="block_content" placeholder="foto1.jpg, foto2.jpg">
+                `;
             }
+            else if (type === 'kod') {
+
+                contentHtml += `
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <label>Kod Bloğu:</label>
+                        <select onchange="this.nextElementSibling.value = 'kod-' + this.value" style="width:150px; padding:5px;">
+                            <option value="python">Python</option>
+                            <option value="c">C / C++</option>
+                            <option value="html">HTML/XML</option>
+                            <option value="css">CSS</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="bash">Terminal/Bash</option>
+                        </select>
+                        <input type="hidden" name="block_type" value="kod-python">
+                    </div>
+                    <textarea name="block_content" rows="10" style="background:#2d2d2d; color:#f8f8f2; font-family:monospace;" placeholder="Kodunuzu buraya yapıştırın..."></textarea>
+                `;
+            }
+
+            else if (type === 'medya') {
+    contentHtml += `
+        <input type="hidden" name="block_type" value="medya">
+        <label>Embed Kodu (YouTube, Instagram, X vb.):</label>
+        <textarea name="block_content" rows="4" placeholder='Örn: <iframe src="..." ...></iframe>'></textarea>
+        <p style="font-size:12px; color:#666;">Not: Paylaş > Yerleştir (Embed) seçeneğindeki kodu buraya yapıştırın.</p>
+    `;
+}
+
             div.innerHTML = contentHtml;
             container.appendChild(div);
+            blockCount++;
         }
     </script>
 </body>
