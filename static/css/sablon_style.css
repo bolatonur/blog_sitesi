@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
+
+
 /* ortak sayfa */
 
 :root {
@@ -32,9 +35,11 @@ body {
     font-family: var(--font-sans);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-      background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-      color 0.3s ease;
+     transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+}
+
+.header, .footer, .sidebar, .card-bg {
+    transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-color 0.35s ease-in-out;
 }
 
 ::selection {
@@ -49,14 +54,23 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: var(--bg-color);
+    z-index: 1000;
     position: -webkit-sticky;
     position: sticky;
-    top: 0;
-    z-index: 1000;
+    top: 0; 
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                background-color 0.35s ease-in-out,
+                color 0.35s ease-in-out;
+                
+    will-change: transform;
 }
 
 .header.gizli {
-    transform: translateY(-100%); 
+    transform: translateY(-100%);
+}
+
+a{
+    text-decoration: none;
 }
 
 .sitelogo {
@@ -139,82 +153,6 @@ body {
 
 }
 
-.medya-container {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    margin: 2rem 0; 
-    width: 100%;
-    
-}
-
-.medya-container iframe {
-    max-width: 100%; 
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.twitter-tweet {
-    margin: 0 auto !important;
-}
-
-.code-window {
-    background-color: #272822;
-    border-radius: 8px;
-    
-    width: 95%;
-    max-width: 1200px;
-    margin: 2rem auto; 
-    
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    overflow: hidden;  
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.window-header {
-    background-color: #1e1e1e;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid #333;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-}
-.red { background-color: #ff5f56; }
-.yellow { background-color: #ffbd2e; }
-.green { background-color: #27c93f; }
-
-.lang-title {
-    margin-left: auto;
-    color: #888;
-    font-size: 0.8rem;
-    font-family: var(--font-sans);
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-pre[class*="language-"] {
-    margin: 0 !important;
-    border-radius: 0 0 8px 8px !important;
-    padding: 1.5rem !important;
-    background: transparent !important; 
-    text-shadow: none !important;
-}
-
-code[class*="language-"] {
-
-    
-    font-size: 0.85rem !important;  
-    
-    font-family: 'Fira Code', 'Consolas', monospace !important;
-    line-height: 1.5; 
-}
 
 @media screen and (max-width: 768px) {
 
@@ -268,21 +206,7 @@ code[class*="language-"] {
     .newbtn button { width: 100%; }
 }
 
-@media screen and (min-width: 768px) {
     
-    .medya-container iframe {
-        width: 700px !important; 
-        max-width: 100%;         
-        display: block;
-    }
-
-    .medya-container iframe[src*="youtube"] {
-        width: 1000px !important;    
-        aspect-ratio: 16 / 9;       
-        height: auto !important;    
-    }
-    
-}
 
 
 /* sayfa özel css */
