@@ -71,3 +71,23 @@ window.addEventListener('scroll', function() {
     sonKaydirma = suAnkiKaydirma <= 0 ? 0 : suAnkiKaydirma;
 
 }, false);
+
+/* blog arama kodları */
+
+function aramaFonksiyonu() {
+    var girdi, ul, li, filtre, h1, i;
+    girdi = document.getElementById("arama");
+    filtre = girdi.value.toUpperCase();
+    ul = document.getElementById("blog-listesi");
+    li = ul.getElementsByTagName("li");
+
+    for (i = 0; i < li.length; i++) {
+        h1 = li[i].getElementsByTagName("h1")[0];
+        if (h1.innerHTML.toUpperCase().indexOf(filtre) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+    }
+}
+
+}

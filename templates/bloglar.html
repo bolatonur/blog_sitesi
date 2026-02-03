@@ -37,9 +37,17 @@
         </div>
     </header>
 
+     
+
     <div class="blog-container">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 1.5rem; ">
+        <input type="text" id="arama" class="aramaCubugu" onkeyup="aramaFonksiyonu()" placeholder="Blog ara!">
+        </div>
+
+        <ul id="blog-listesi">
         {% for yazi in yazilar %}
 
+            <li style="list-style: none;">
             <div class="blog">
                 <div class="picturediv">
                     <a href="{{ url_for('blog_detay', post_slug=yazi.slug) }}">
@@ -53,8 +61,10 @@
                     <p class="yazi">{{ yazi.ozet }}</p>
                 </div>
             </div>
+            </li> 
 
         {% endfor %}
+        </ul>
 
 
     </div>

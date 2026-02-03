@@ -257,9 +257,32 @@ body {
     width: 100%;           
 }
 
+.aramaCubugu {
+    background-color: #e5e2da; 
+    color: #1e1e1c; 
+    border: 3px solid #d97757; 
+    border-radius: 10px; 
+    padding: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.aramaCubugu:focus{
+    outline: none;
+    box-shadow: 0 4px 10px rgba(217, 119, 87, 0.3);
+
+}
+
 
 @media screen and (max-width: 768px) {
     .blog { flex-direction: column; }
     .picturediv { flex: 1; }
+    .blog-container{
+        margin-top: 1.5rem;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    .aramaCubugu{padding: 6px;}
 
 }
