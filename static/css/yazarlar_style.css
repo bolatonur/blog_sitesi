@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
-
 /* ortak sayfa */
 
 :root {
@@ -34,11 +32,9 @@ body {
     font-family: var(--font-sans);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-     transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
-}
-
-.header, .footer, .sidebar, .card-bg {
-    transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-color 0.35s ease-in-out;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+      background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      color 0.3s ease;
 }
 
 ::selection {
@@ -53,23 +49,14 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: var(--bg-color);
-    z-index: 1000;
     position: -webkit-sticky;
     position: sticky;
-    top: 0; 
-    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-                background-color 0.35s ease-in-out,
-                color 0.35s ease-in-out;
-                
-    will-change: transform;
+    top: 0;
+    z-index: 1000;
 }
 
 .header.gizli {
-    transform: translateY(-100%);
-}
-
-a{
-    text-decoration: none;
+    transform: translateY(-100%); 
 }
 
 .sitelogo {
