@@ -123,7 +123,6 @@ def sablon():
     return render_template('sablon.html')
 """
 
-# son teknoloji mucizesi cookie mantığı basit aslında da çaktırma
 
 @app.route('/blog/<string:post_slug>')
 def blog_detay(post_slug):
